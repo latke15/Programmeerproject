@@ -9,27 +9,30 @@
 import UIKit
 
 class HelpMeStudy: UIViewController {
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var studyTimeLabel: UILabel!
+    @IBOutlet weak var timeSlider: UISlider!
+    
+    // User defaults
+    let defaults = UserDefaults.standard
+    
+    var minutes: Int = 0
+    var bla: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func slider(_ sender: UISlider) {
+        minutes = Int(sender.value)
+        studyTimeLabel.text = String(minutes) + " minutes"
+        self.defaults.set(minutes, forKey:"minutes")
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func startStudy(_ sender: Any) {
+        _ = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(StudyTimer.studyCounter), userInfo: nil, repeats: false)
+        self.defaults.set(minutes, forKey:"minutes")
+        print(bla = defaults.integer(forKey:"minutes"))
     }
-    */
-
 }

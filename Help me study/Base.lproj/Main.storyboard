@@ -100,7 +100,14 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xIX-bE-d3n"/>
-                                    <segue destination="UIC-oZ-Urs" kind="show" id="7Kb-2H-5TG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjK-Le-PpJ">
+                                <rect key="frame" x="284" y="512" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="e78-IR-3wv" kind="show" id="2fN-6v-9rY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -127,7 +134,7 @@
         <!--Menu Controller-->
         <scene sceneID="boN-n4-NlU">
             <objects>
-                <viewController title="Menu" id="Qzk-34-XqY" userLabel="Menu Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuVC" title="Menu" id="Qzk-34-XqY" userLabel="Menu Controller" customClass="Menu" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RQT-p7-knk"/>
                         <viewControllerLayoutGuide type="bottom" id="3eN-qQ-o6O"/>
@@ -167,12 +174,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wr3-bM-tpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="131.78410794602701"/>
+            <point key="canvasLocation" x="2984.8000000000002" y="112.89355322338831"/>
         </scene>
         <!--Help me study-->
         <scene sceneID="eje-LO-l0y">
             <objects>
-                <viewController title="Help me study" id="VyA-Kq-l89" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vO4-iv-ums" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="Help me study" id="VyA-Kq-l89" customClass="HelpMeStudy" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NK5-jh-yxw"/>
                         <viewControllerLayoutGuide type="bottom" id="h9X-wO-zod"/>
@@ -181,68 +189,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amv-yA-xrS">
-                                <rect key="frame" x="139" y="109" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pxz-xU-09j">
-                                <rect key="frame" x="139" y="192" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sx3-jG-Sqv">
-                                <rect key="frame" x="139" y="275" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="How long is your total study time?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-RL-bIK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="How long do you want one study round to be?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rlc-8Y-cla">
-                                <rect key="frame" x="0.0" y="147" width="375" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="How long do you want one break to be?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8nd-eS-vPR">
-                                <rect key="frame" x="0.0" y="230" width="375" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGW-ZX-6qS">
                                 <rect key="frame" x="130" y="318" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Confirm"/>
                                 <connections>
+                                    <action selector="startStudy:" destination="VyA-Kq-l89" eventType="touchUpInside" id="DoV-pV-Ooa"/>
                                     <segue destination="eYr-No-UyS" kind="show" id="Viv-Oq-jMb"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="How long do you want one study round to be?" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnT-uZ-reC">
+                                <rect key="frame" x="16" y="72" width="343" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="Xm1-Rz-HhX">
+                                <rect key="frame" x="56" y="221" width="263" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="slider:" destination="VyA-Kq-l89" eventType="valueChanged" id="dXc-eB-fse"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0f-fu-8XH">
+                                <rect key="frame" x="112" y="162" width="151" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="YGW-ZX-6qS" id="phS-Rs-oig"/>
+                        <outlet property="studyTimeLabel" destination="P0f-fu-8XH" id="W2Q-hn-SQE"/>
+                        <outlet property="timeSlider" destination="Xm1-Rz-HhX" id="Tnb-8T-1p4"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vO4-iv-ums" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2740" y="883.80809595202402"/>
         </scene>
         <!--Study timer-->
         <scene sceneID="Exh-qu-bX3">
             <objects>
-                <viewController title="Study timer" id="eYr-No-UyS" sceneMemberID="viewController">
+                <viewController title="Study timer" id="eYr-No-UyS" customClass="StudyTimer" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5i8-y8-Xo8"/>
                         <viewControllerLayoutGuide type="bottom" id="70y-8O-29y"/>
@@ -258,9 +250,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3i-jr-GuK">
+                                <rect key="frame" x="87" y="400" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="startTimer:" destination="eYr-No-UyS" eventType="touchUpInside" id="JPq-Hb-dS9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-WT-a6C">
+                                <rect key="frame" x="241" y="400" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopTimer:" destination="eYr-No-UyS" eventType="touchUpInside" id="b1f-Je-eKT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="startButton" destination="z3i-jr-GuK" id="hKK-b5-2QP"/>
+                        <outlet property="stopButton" destination="qdd-WT-a6C" id="WZS-Kz-dBj"/>
+                        <outlet property="timeLeftLabel" destination="vSj-tg-Rd3" id="cSt-fY-Owe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOG-gK-6hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,7 +282,7 @@
         <!--Friends-->
         <scene sceneID="xrP-0e-HSA">
             <objects>
-                <viewController title="Friends" id="vp6-Wh-BYX" userLabel="Friends" sceneMemberID="viewController">
+                <viewController title="Friends" id="vp6-Wh-BYX" userLabel="Friends" customClass="Friends" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLR-iD-p6v"/>
                         <viewControllerLayoutGuide type="bottom" id="Hh4-JY-BEd"/>
@@ -308,12 +321,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IhJ-MT-JHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3679.1999999999998" y="131.78410794602701"/>
+            <point key="canvasLocation" x="4618.3999999999996" y="131.78410794602701"/>
         </scene>
         <!--Rankings-->
         <scene sceneID="BsK-CD-W8j">
             <objects>
-                <viewController title="Rankings" id="Qkt-cq-Ro6" sceneMemberID="viewController">
+                <viewController title="Rankings" id="Qkt-cq-Ro6" customClass="Rankings" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ksj-dT-mLB"/>
                         <viewControllerLayoutGuide type="bottom" id="fwn-mA-N35"/>
@@ -362,22 +375,22 @@
             <point key="canvasLocation" x="3799" y="-612"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="u30-7l-xyL">
+        <scene sceneID="rhE-wX-vqR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UIC-oZ-Urs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e78-IR-3wv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WYU-op-Nzc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OvC-XG-k4s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Qzk-34-XqY" kind="relationship" relationship="rootViewController" id="TRw-yb-Oo8"/>
+                        <segue destination="Qzk-34-XqY" kind="relationship" relationship="rootViewController" id="gcR-rE-dqM"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HIY-ak-2ON" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbr-16-BDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880.8" y="131.78410794602701"/>
+            <point key="canvasLocation" x="2045.5999999999999" y="112.89355322338831"/>
         </scene>
     </scenes>
 </document>

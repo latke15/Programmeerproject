@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseStorage
 
 class StartViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -25,7 +26,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var selectPictureButton: UIButton!
     let picker = UIImagePickerController()
-    var userStorage = FIRStorage.storage()
+    var userStorage : FIRStorageReference!
     var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
@@ -36,8 +37,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         picker.delegate = self
         
-        var storage = userStorage.reference(forURL: "gs://help-me-study-d97f5.appspot.com")
-        storage = userStorage.child("users")
+        let storage = FIRStorage.storage().reference(forURL: "gs://help-me-study-d97f5.appspot.com")
+        userStorage = storage.child("users")
         ref = FIRDatabase.database().reference()
     }
 
@@ -128,6 +129,14 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will :)")
             return
         }
+        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+            if let error = error{
+                print(error.localizedDescription)
+            }
+            if let user = user{
+                _ = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
+            }
+        })
     }
     
     @IBAction func register(_ sender: Any) {
@@ -151,11 +160,11 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     changeRequest?.displayName = self.firstNameTextField.text
                     changeRequest?.commitChanges(completion: nil)
                     
-                    let imageRef = userStorage.child("\(user.uid).jpg")
+                    let imageRef = self.userStorage.child("\(user.uid).jpg")
                     
                     let data = UIImageJPEGRepresentation(self.profilePicture.image!, 0.5)
                     
-                    let uploadTask = imageRef.put(data!, metadata: nil, completion: {(metadata, error ) in
+                    let uploadTask = imageRef.put(data!, metadata: nil, completion: {(metadata, err ) in
                         if err != nil{
                             print(err!.localizedDescription)
                         }
@@ -166,25 +175,21 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                             }
                             if let url = url {
                                 let userInfo: [String: Any] = ["uid" : user.uid,
-                                                               "First name" : firstNameTextField.text!,
-                                                               "Last name" : lastNameTextField.text!,
-                                                               "email" : emailTextField.text!,
+                                                               "First name" : self.firstNameTextField.text!,
+                                                               "Last name" : self.lastNameTextField.text!,
+                                                               "email" : self.emailTextField.text!,
                                                                "urlToImage": url.absoluteString]
                                 self.ref.child("users").child(user.uid).setValue(userInfo)
                                 
-                                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "userVC")
+                                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
                                 self.present(vc, animated: true, completion: nil)
                                 
                             }
                         })
-                    
-                    
                     })
-                    
+                    uploadTask.resume()
                 }
-            
             })
-            
         }
     }
     
