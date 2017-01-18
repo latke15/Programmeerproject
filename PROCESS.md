@@ -6,3 +6,7 @@ De eerste dag van het project stond in teken van het op papier zetten van het id
 Nadat de eerste grove lijnen waren uitgezet, werd het tijd om er wat gedetailleerder op in te gaan. Wat hierin beschreven is, is terug te lezen in het DESIGN bestand.
 ### Day 3
 De eerste teambesprekingen vonden plaats. Helaas ben ik ziek wakker geworden waardoor ik deze dag er niet bij kon zijn. Wel zijn er vorderingen gemaakt in het DESIGN bestand en is deze ook afgemaakt. Tevens is de start van de applicatie zelf ook gemaakt.
+### Day 4
+Ik voelde me iets beter dus besloot om naar de universiteit te gaan. Ik ben vroegtijdig weer naar huis gegaan. Niet veel vooruitgang is geboekt.
+### Day 5
+Helaas voel ik mij alleen maar slechter, wat ook geen positieve invloed heeft op de vorderingen van het project.
