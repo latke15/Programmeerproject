@@ -33,7 +33,9 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         logRegSwitch.selectedSegmentIndex = 0
         
-        loginButton.isHidden = true
+        loginButton.isHidden = false
+        
+        self.navigationController?.isNavigationBarHidden = true
         
         picker.delegate = self
         
@@ -134,7 +136,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 print(error.localizedDescription)
             }
             if let user = user{
-                _ = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
+                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
+                self.present(vc, animated: true, completion: nil)
             }
         })
     }
