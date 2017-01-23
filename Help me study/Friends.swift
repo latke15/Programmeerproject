@@ -17,6 +17,8 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveUsers()
+        self.navigationController?.isNavigationBarHidden = false
+
     
     }
     
@@ -48,74 +50,75 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as! FriendsCell
+        let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
-        cell.nameLabel.text = self.friends[indexPath.row].name
-        cell.userID = self.friends[indexPath.row].userID
-        cell.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
-//        checkFollowing(indexPath: indexPath)
+        cell?.nameLabel.text = self.friends[indexPath.row].name
+        cell?.userID = self.friends[indexPath.row].userID
+        cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
+        checkFollowing(indexPath: indexPath)
 
         
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count ?? 0
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        let uid = FIRAuth.auth()!.currentUser!.uid
-//        let ref = FIRDatabase.database().reference()
-//        let key = ref.child("users").childByAutoId().key
-//        
-//        var isFriend = false
-//        
-//        ref.child("users").child(uid).child("friends").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-//            
-//            if let befriended = snapshot.value as? [String : AnyObject] {
-//                for (ke, value) in befriended {
-//                    if value as! String == self.friends[indexPath.row].userID {
-//                        isFriend = true
-//                        
-//                        ref.child("users").child(uid).child("friends/\(ke)").removeValue()
-////                        ref.child("users").child(self.friends[indexPath.row].userID).child("friends/\(ke)").removeValue()
-//                        
-//                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
-//                    }
-//                }
-//            }
-//            if !isFriend {
-//                let befriend = ["friends/\(key)" : self.friends[indexPath.row].userID]
-////                let followers = ["followers/\(key)" : uid]
-//                
-//                ref.child("users").child(uid).updateChildValues(befriend)
-////                ref.child("users").child(self.friends[indexPath.row].userID).updateChildValues(followers)
-//                
-//                self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//            }
-//        })
-//        ref.removeAllObservers()
-//        
-//    }
-//
-//    func checkFollowing(indexPath: IndexPath) {
-//        let uid = FIRAuth.auth()!.currentUser!.uid
-//        let ref = FIRDatabase.database().reference()
-//        
-//        ref.child("users").child(uid).child("friends").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-//            
-//            if let friend = snapshot.value as? [String : AnyObject] {
-//                for (_, value) in friend {
-//                    if value as! String == self.friends[indexPath.row].userID {
-//                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//                    }
-//                }
-//            }
-//        })
-//        ref.removeAllObservers()
-//        
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        let ref = FIRDatabase.database().reference()
+        let key = ref.child("users").childByAutoId().key
+        
+        var isFollowing = false
+        
+        ref.child("users").child(uid).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
+            
+            if let following = snapshot.value as? [String : AnyObject] {
+                for (ke, value) in following {
+                    if value as! String == self.friends[indexPath.row].userID {
+                        isFollowing = true
+                        
+                        ref.child("users").child(uid).child("following/\(ke)").removeValue()
+                        ref.child("users").child(self.friends[indexPath.row].userID).child("followers/\(ke)").removeValue()
+                        
+                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
+                    }
+                }
+            }
+            if !isFollowing {
+                let following = ["following/\(key)" : self.friends[indexPath.row].userID]
+                let followers = ["followers/\(key)" : uid]
+                
+                ref.child("users").child(uid).updateChildValues(following)
+                ref.child("users").child(self.friends[indexPath.row].userID).updateChildValues(followers)
+                
+                self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            }
+        })
+        ref.removeAllObservers()
+        friendsTableView.deselectRow(at: indexPath, animated: true)
+        
+    }
+
+    func checkFollowing(indexPath: IndexPath) {
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        let ref = FIRDatabase.database().reference()
+        
+        ref.child("users").child(uid).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
+            
+            if let following = snapshot.value as? [String : AnyObject] {
+                for (_, value) in following {
+                    if value as! String == self.friends[indexPath.row].userID {
+                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                    }
+                }
+            }
+        })
+        ref.removeAllObservers()
+        
+    }
 }
 
 extension UIImageView {

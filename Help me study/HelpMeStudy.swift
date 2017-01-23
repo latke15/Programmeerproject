@@ -19,7 +19,7 @@ class HelpMeStudy: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     
     var audioPlayer = AVAudioPlayer()
-    var minutes: Int = 0
+    var minutes: Int = 30
     var studyMinutes: Int = 0
     var pauseMinutes: Int = 0
     var studyTimer = Timer()
@@ -28,6 +28,8 @@ class HelpMeStudy: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
+
         UIView.animate(withDuration: 0.0) {
             self.timeLeftLabel.alpha = 0
             self.timeLeftLabel.isUserInteractionEnabled = false
@@ -53,8 +55,15 @@ class HelpMeStudy: UIViewController {
     
     @IBAction func slider(_ sender: UISlider) {
         minutes = Int(sender.value)
-        studyTimeLabel.text = String(minutes) + " minutes"
-        timeLeftLabel.text = String(minutes)
+        if minutes == 0{
+            studyTimeLabel.text = "30" + " minutes"
+            timeLeftLabel.text = "30"
+        }
+        else{
+            studyTimeLabel.text = String(minutes) + " minutes"
+            timeLeftLabel.text = String(minutes)
+        }
+        
     }
 
     func studyCounter(){

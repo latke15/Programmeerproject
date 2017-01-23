@@ -42,6 +42,17 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let storage = FIRStorage.storage().reference(forURL: "gs://help-me-study-d97f5.appspot.com")
         userStorage = storage.child("users")
         ref = FIRDatabase.database().reference()
+        
+        // source: http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+        // Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StartViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    // source: http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+    // Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        // Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     @IBAction func logRegSwitch(_ sender: Any) {
@@ -136,7 +147,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 print(error.localizedDescription)
             }
             if let user = user{
-                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
+                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
                 self.present(vc, animated: true, completion: nil)
             }
         })
@@ -184,7 +195,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                                                                "urlToImage": url.absoluteString]
                                 self.ref.child("users").child(user.uid).setValue(userInfo)
                                 
-                                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
+                                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
                                 self.present(vc, animated: true, completion: nil)
                                 
                             }
