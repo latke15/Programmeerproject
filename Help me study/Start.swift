@@ -20,11 +20,10 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var logRegSwitch: UISegmentedControl!
-    
     @IBOutlet weak var selectPictureButton: UIButton!
+    
     let picker = UIImagePickerController()
     var userStorage : FIRStorageReference!
     var ref: FIRDatabaseReference!
@@ -32,8 +31,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         logRegSwitch.selectedSegmentIndex = 0
-        
-        loginButton.isHidden = false
         
         self.navigationController?.isNavigationBarHidden = true
         
@@ -62,6 +59,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             if (self.logRegSwitch.selectedSegmentIndex == 0){
                 // register
                 
+                self.registerButton.setTitle("Register", for: .normal)
+                
                 self.emailTextField.alpha = 1
                 self.emailTextField.isUserInteractionEnabled = true
                 
@@ -80,9 +79,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 self.registerButton.alpha = 1
                 self.registerButton.isUserInteractionEnabled = true
                 
-                self.loginButton.alpha = 0
-                self.loginButton.isUserInteractionEnabled = false
-                
                 self.profilePicture.alpha = 1
                 self.profilePicture.isUserInteractionEnabled = true
                 
@@ -91,6 +87,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 
             } else {
                 // login
+                
+                self.registerButton.setTitle("Login", for: .normal)
                 
                 self.emailTextField.alpha = 1
                 self.emailTextField.isUserInteractionEnabled = true
@@ -107,11 +105,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 self.passwordConfirmationTextField.alpha = 0
                 self.passwordConfirmationTextField.isUserInteractionEnabled = false
                 
-                self.registerButton.alpha = 0
-                self.registerButton.isUserInteractionEnabled = false
-                
-                self.loginButton.alpha = 1
-                self.loginButton.isUserInteractionEnabled = true
+                self.registerButton.alpha = 1
+                self.registerButton.isUserInteractionEnabled = true
                 
                 self.profilePicture.alpha = 0
                 self.profilePicture.isUserInteractionEnabled = false
@@ -119,7 +114,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 self.selectPictureButton.alpha = 0
                 self.selectPictureButton.isUserInteractionEnabled = false
 
-                
             }
         }
     }
@@ -137,23 +131,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func login(_ sender: Any) {
-        guard emailTextField.text != "", passwordTextField.text != "" else{
-            showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will :)")
-            return
-        }
-        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
-            if let error = error{
-                print(error.localizedDescription)
-            }
-            if let user = user{
-                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
-                self.present(vc, animated: true, completion: nil)
-            }
-        })
-    }
-    
     @IBAction func register(_ sender: Any) {
+        if registerButton.currentTitle == "Register"{
         guard firstNameTextField.text != "", lastNameTextField.text != "", emailTextField.text != "", passwordTextField.text != "", passwordConfirmationTextField.text != "" else{
             showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will :)")
             return
@@ -177,6 +156,9 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     let imageRef = self.userStorage.child("\(user.uid).jpg")
                     
                     let data = UIImageJPEGRepresentation(self.profilePicture.image!, 0.5)
+//                    if data == nil{
+//                        self.showAlertView(title: "Error!", withDescription: "No picture was selected. Please select one to proceed.", buttonText: "Ok, I will :)")
+//                    }
                     
                     let uploadTask = imageRef.put(data!, metadata: nil, completion: {(metadata, err ) in
                         if err != nil{
@@ -204,6 +186,23 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     uploadTask.resume()
                 }
             })
+            }}
+        else{
+            
+            guard emailTextField.text != "", passwordTextField.text != "" else{
+                showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will :)")
+                return
+            }
+            FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+                if let error = error{
+                    print(error.localizedDescription)
+                }
+                if let user = user{
+                    let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
+                    self.present(vc, animated: true, completion: nil)
+                }
+            })
+            
         }
     }
     
@@ -213,6 +212,4 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
-    }
-    
-
+}
