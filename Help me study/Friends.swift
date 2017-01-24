@@ -28,8 +28,8 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if let uid = value["uid"] as? String {
                     if uid != FIRAuth.auth()!.currentUser!.uid {
                         let userToShow = Friend()
-                        if let firstName = value["First name"] as? String, let lastName = value["Last name"] as? String, let imagePath = value["urlToImage"] as? String {
-                            userToShow.name = firstName + lastName
+                        if let fullName = value["Full name"] as? String, let imagePath = value["urlToImage"] as? String {
+                            userToShow.name = fullName
                             userToShow.imagePath = imagePath
                             userToShow.userID = uid
                             self.friends.append(userToShow)

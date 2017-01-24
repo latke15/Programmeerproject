@@ -36,7 +36,7 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             for (_, value) in user {
                                 let uid = value["uid"] as? String
                                 if fid == uid {
-                                    DispatchQueue.main.async {                                                                                  if let fullName = value["First name"] as? String, let imagePath = value["urlToImage"] as? String {                                             userToShow.name = fullName
+                                    DispatchQueue.main.async {                                                                                  if let fullName = value["Full name"] as? String, let imagePath = value["urlToImage"] as? String {                                             userToShow.name = fullName
                                         userToShow.imagePath = imagePath
                                         self.friends.append(userToShow)
                                         }

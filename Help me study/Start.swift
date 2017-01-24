@@ -140,11 +140,20 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if (passwordTextField.text != passwordConfirmationTextField.text){
             showAlertView(title: "Error!", withDescription: "Please make sure to fill in the same passwords.", buttonText: "Ok, I will :)")
         }
+        if self.profilePicture.image == nil {
+            self.showAlertView(title: "Error!", withDescription: "No picture was selected. Please select one to proceed.", buttonText: "Ok, I will :)")
+        }
+            if !(emailTextField.text?.contains("@"))!{
+                self.showAlertView(title: "Error!", withDescription: "An incorrect emailaddress was given. Please change it.", buttonText: "Ok, I will :)")
+            }
         else{
+            
+            let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
             FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordConfirmationTextField.text!, completion: {(user, Error) in
                 
                 if let error = Error{
                     print(error.localizedDescription)
+                    self.showAlertView(title: "Error!", withDescription: error.localizedDescription, buttonText: "Ok, thanks!")
                 }
                 
                 if let user = user{
@@ -156,9 +165,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     let imageRef = self.userStorage.child("\(user.uid).jpg")
                     
                     let data = UIImageJPEGRepresentation(self.profilePicture.image!, 0.5)
-//                    if data == nil{
-//                        self.showAlertView(title: "Error!", withDescription: "No picture was selected. Please select one to proceed.", buttonText: "Ok, I will :)")
-//                    }
                     
                     let uploadTask = imageRef.put(data!, metadata: nil, completion: {(metadata, err ) in
                         if err != nil{
@@ -171,8 +177,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                             }
                             if let url = url {
                                 let userInfo: [String: Any] = ["uid" : user.uid,
-                                                               "First name" : self.firstNameTextField.text!,
-                                                               "Last name" : self.lastNameTextField.text!,
+                                                               "Full name" : fullName,
                                                                "email" : self.emailTextField.text!,
                                                                "urlToImage": url.absoluteString]
                                 self.ref.child("users").child(user.uid).setValue(userInfo)
@@ -196,6 +201,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                 if let error = error{
                     print(error.localizedDescription)
+                    self.showAlertView(title: "Error!", withDescription: "Please fill in the right email and password!", buttonText: "Ok, I will :)")
                 }
                 if let user = user{
                     let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")

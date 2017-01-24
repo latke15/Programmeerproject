@@ -67,6 +67,15 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		026F1F501E37881700DA2908 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				02E4F0AA1E2F891B00E9533F /* FriendsCell.swift */,
+				028848591E361EC600876E5B /* FriendRankingCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		02C4FFA21E2E7C65004918A7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +117,7 @@
 				0217BB4A1E2CCEB9002F0379 /* Layout */,
 				02C96B731E277EE10021C03C /* Info.plist */,
 				02E4F0A61E2F6CBB00E9533F /* GoogleService-Info.plist */,
-				02E4F0AA1E2F891B00E9533F /* FriendsCell.swift */,
-				028848591E361EC600876E5B /* FriendRankingCell.swift */,
+				026F1F501E37881700DA2908 /* Cells */,
 			);
 			path = "Help me study";
 			sourceTree = "<group>";

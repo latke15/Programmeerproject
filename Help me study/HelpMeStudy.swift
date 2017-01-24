@@ -145,11 +145,11 @@ class HelpMeStudy: UIViewController {
         if pauseButton.currentTitle == "Pause"{
             studyTimer.invalidate()
             breakTimer.invalidate()
-            pauseButton.setTitle("Play" , for: .normal )
+            pauseButton.setTitle("Play", for: .normal)
         }
         if pauseButton.currentTitle == "Play"{
-            studyTimer.fire()
-            pauseButton.setTitle("Pause" , for: .normal )
+            startStudy(confirmButton)
+            pauseButton.setTitle("Pause", for: .normal)
         }
     }
     
@@ -161,7 +161,7 @@ class HelpMeStudy: UIViewController {
         timeSlider.setValue(30, animated: true)
         studyTimeLabel.text = "30"
 
-        let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "menuVC")
+        let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
         self.present(vc, animated: true, completion: nil)
     }
     
