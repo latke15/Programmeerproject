@@ -141,7 +141,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTT-KB-tsZ">
                                 <rect key="frame" x="64" y="82" width="67" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Friends">
+                                <state key="normal" title="Users">
                                     <color key="titleColor" red="0.015683278441429138" green="0.015688259154558182" blue="0.015681706368923187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -284,7 +284,7 @@
         <!--Friends-->
         <scene sceneID="xrP-0e-HSA">
             <objects>
-                <viewController title="Friends" id="vp6-Wh-BYX" userLabel="Friends" customClass="Friends" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Users" id="vp6-Wh-BYX" userLabel="Friends" customClass="Friends" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLR-iD-p6v"/>
                         <viewControllerLayoutGuide type="bottom" id="Hh4-JY-BEd"/>
