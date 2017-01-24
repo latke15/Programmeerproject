@@ -11,9 +11,25 @@ import Firebase
 
 class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var friendsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
+
+    
+    // Setup the Search Controller
+    //searchController.searchResultsUpdater = self
+    //searchController.searchBar.delegate = self
+    //definesPresentationContext = true
+    //searchController.dimsBackgroundDuringPresentation = false
     
     var friends = [Friend]()
+    //var filteredCandies = [Friend]()
 
+
+    //override func viewWillAppear(_ animated: Bool) {
+      //  clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        //super.viewWillAppear(animated)
+    //}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveUsers()
@@ -49,6 +65,13 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
+        //if searchController.isActive && searchController.searchBar.text != "" {
+          //  friends = filteredUsers[indexPath.row]
+        //} else {
+          //  friends = friends[indexPath.row]
+        //}
+
+        
         cell?.nameLabel.text = self.friends[indexPath.row].name
         cell?.userID = self.friends[indexPath.row].userID
         cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
@@ -59,6 +82,9 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //if searchController.isActive && searchController.searchBar.text != "" {
+          //  return filteredCandies.count
+        //}
         return friends.count ?? 0
     }
     
@@ -114,8 +140,15 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         })
         ref.removeAllObservers()
-        
     }
+    
+    //func filterContentForSearchText(_ searchText: String) {
+      //  filteredUsers = friends.filter({( friend : Friends) -> Bool in
+        //    let categoryMatch = (scope == "All") || (candy.category == scope)
+          //  return categoryMatch && candy.name.lowercased().contains(searchText.lowercased())
+        //})
+        //friendsTableView.reloadData()
+    //}
 }
 
 extension UIImageView {
@@ -133,3 +166,18 @@ extension UIImageView {
         task.resume()
     }
 }
+
+//extension Friends: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+  //  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange /selectedScope: Int) {
+        //filterContentForSearchText(searchBar.text!)
+  //  }
+//}
+
+//extension Friends: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+  //  func updateSearchResults(for searchController: UISearchController) {
+    //    let searchBar = searchController.searchBar
+      //  filterContentForSearchText(searchController.searchBar.text!)
+    //}
+//}
