@@ -17,35 +17,41 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        retrieveUsers()
-
+        followingUsers()
         // Do any additional setup after loading the view.
     }
     
-//    func retrieveUsers() {
-//        let ref = FIRDatabase.database().reference()
-//        let uid = FIRAuth.auth()!.currentUser!.uid
-//        ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-//            let users = snapshot.value as! [String: AnyObject]
-//            self.friends.removeAll()
-//            for (_, value) in users {
-//                if let uid = value["uid"] as? String {
-//                    ref.child("users").child(uid).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
-//                        let userToShow = Friend()
-//                        if let firstName = value["First name"] as? String, let lastName = value["Last name"] as? String, let imagePath = value["urlToImage"] as? String {
-//                            userToShow.name = firstName + lastName
-//                            userToShow.imagePath = imagePath
-//                            userToShow.userID = uid
-//                            self.friends.append(userToShow)
-//                        }
-//                    }
-//                }
-//            }
-//            self.rankingTableView.reloadData()
-//        })
-//        ref.removeAllObservers()
-//    }
-    
+    func followingUsers() {
+        let ref = FIRDatabase.database().reference()
+        var uid = FIRAuth.auth()!.currentUser!.uid
+        ref.child("users").child(uid).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
+            if let following = snapshot.value as? [String: AnyObject] {
+                for(_, value) in following {
+                    let fid = value as! String
+                    let userToShow = Friend()
+                    userToShow.userID = fid
+                    ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in                                                  let user = snapshot.value as! [String : AnyObject]
+                        self.friends.removeAll()
+                        if fid == value as? String {
+                            for (_, value) in user {
+                                let uid = value["uid"] as? String
+                                if fid == uid {
+                                    DispatchQueue.main.async {                                                                                  if let fullName = value["First name"] as? String, let imagePath = value["urlToImage"] as? String {                                             userToShow.name = fullName
+                                        userToShow.imagePath = imagePath
+                                        self.friends.append(userToShow)
+                                        }
+                                        self.rankingTableView.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    }
+
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

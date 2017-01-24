@@ -17,9 +17,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveUsers()
-        self.navigationController?.isNavigationBarHidden = false
-
-    
     }
     
     func retrieveUsers() {
