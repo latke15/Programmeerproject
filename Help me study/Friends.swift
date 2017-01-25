@@ -9,26 +9,10 @@
 import UIKit
 import Firebase
 
-class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
     @IBOutlet weak var friendsTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    let searchController = UISearchController(searchResultsController: nil)
-
-    
-    // Setup the Search Controller
-    //searchController.searchResultsUpdater = self
-    //searchController.searchBar.delegate = self
-    //definesPresentationContext = true
-    //searchController.dimsBackgroundDuringPresentation = false
-    
     var friends = [Friend]()
-    //var filteredCandies = [Friend]()
-
-
-    //override func viewWillAppear(_ animated: Bool) {
-      //  clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
-        //super.viewWillAppear(animated)
-    //}
+    var filteredFriends = [Friend]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +42,26 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ref.removeAllObservers()
     }
     
+    func filterContentForSearchText(searchText: String, scope: String = "Title"){
+        self.filteredFriends = self.friends.filter({( friend: Friend) -> Bool in
+            
+            let categoryMatch = (scope == "Title")
+            let stringMatch = friend.name.contains(searchText)
+            
+            return categoryMatch && (stringMatch != nil)
+        })
+    }
+    
+    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
+        self.filterContentForSearchText(searchText: searchString!, scope: "Title")
+        return true
+    }
+    
+    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(searchText: (self.searchDisplayController!.searchBar.text)!, scope: "Title")
+        return true
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -65,27 +69,29 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
-        //if searchController.isActive && searchController.searchBar.text != "" {
-          //  friends = filteredUsers[indexPath.row]
-        //} else {
-          //  friends = friends[indexPath.row]
-        //}
-
+        var friend: Friend
         
+        if (friendsTableView == self.searchDisplayController?.searchResultsTableView){
+            friend = self.filteredFriends[indexPath.row]
+        }
+        else{
+            friend = self.friends[indexPath.row]
+        }
         cell?.nameLabel.text = self.friends[indexPath.row].name
         cell?.userID = self.friends[indexPath.row].userID
         cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
         checkFollowing(indexPath: indexPath)
-
-        
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //if searchController.isActive && searchController.searchBar.text != "" {
-          //  return filteredCandies.count
-        //}
-        return friends.count ?? 0
+        
+        if (friendsTableView == self.searchDisplayController?.searchResultsTableView){
+            return filteredFriends.count
+        }
+        else{
+            return friends.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -141,14 +147,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource {
         })
         ref.removeAllObservers()
     }
-    
-    //func filterContentForSearchText(_ searchText: String) {
-      //  filteredUsers = friends.filter({( friend : Friends) -> Bool in
-        //    let categoryMatch = (scope == "All") || (candy.category == scope)
-          //  return categoryMatch && candy.name.lowercased().contains(searchText.lowercased())
-        //})
-        //friendsTableView.reloadData()
-    //}
 }
 
 extension UIImageView {
@@ -166,18 +164,3 @@ extension UIImageView {
         task.resume()
     }
 }
-
-//extension Friends: UISearchBarDelegate {
-    // MARK: - UISearchBar Delegate
-  //  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange /selectedScope: Int) {
-        //filterContentForSearchText(searchBar.text!)
-  //  }
-//}
-
-//extension Friends: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-  //  func updateSearchResults(for searchController: UISearchController) {
-    //    let searchBar = searchController.searchBar
-      //  filterContentForSearchText(searchController.searchBar.text!)
-    //}
-//}
