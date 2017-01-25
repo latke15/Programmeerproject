@@ -30,7 +30,7 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let fid = value as! String
                     let userToShow = Friend()
                     userToShow.userID = fid
-                    ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in                                                  let user = snapshot.value as! [String : AnyObject]
+                ref.child("users").queryOrdered(byChild: "points").observeSingleEvent(of: .value, with: { snapshot in                                                  let user = snapshot.value as! [String : AnyObject]
                         self.friends.removeAll()
                         if fid == value as? String {
                             for (_, value) in user {
