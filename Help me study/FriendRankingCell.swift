@@ -11,6 +11,7 @@ import UIKit
 class FriendRankingCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var studiedMinutesLabel: UILabel!
 
     var userID: String!
 

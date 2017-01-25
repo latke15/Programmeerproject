@@ -68,12 +68,6 @@ class HelpMeStudy: UIViewController {
 
     func studyCounter(){
         studyMinutes -= 1
-//        if minutes/10 != 0{
-//            timeLeftLabel.isHidden = true
-//        }
-//        else{
-//            timeLeftLabel.isHidden = false
-//        }
         timeLeftLabel.text = String(studyMinutes)
         print("studycounter")
         

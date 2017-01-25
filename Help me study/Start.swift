@@ -179,7 +179,8 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                                 let userInfo: [String: Any] = ["uid" : user.uid,
                                                                "Full name" : fullName,
                                                                "email" : self.emailTextField.text!,
-                                                               "urlToImage": url.absoluteString]
+                                                               "urlToImage": url.absoluteString,
+                                                               "points": 0]
                                 self.ref.child("users").child(user.uid).setValue(userInfo)
                                 
                                 let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")

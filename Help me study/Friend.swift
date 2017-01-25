@@ -13,5 +13,6 @@ class Friend: NSObject {
     var userID: String!
     var name: String!
     var imagePath: String!
+    var points: Int!
 
 }

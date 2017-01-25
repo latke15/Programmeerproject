@@ -36,8 +36,9 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             for (_, value) in user {
                                 let uid = value["uid"] as? String
                                 if fid == uid {
-                                    DispatchQueue.main.async {                                                                                  if let fullName = value["Full name"] as? String, let imagePath = value["urlToImage"] as? String {                                             userToShow.name = fullName
+                                    DispatchQueue.main.async {                                                                                  if let fullName = value["Full name"] as? String, let imagePath = value["urlToImage"] as? String, let points = value["points"] {                                             userToShow.name = fullName
                                         userToShow.imagePath = imagePath
+                                        userToShow.points = points as! Int!
                                         self.friends.append(userToShow)
                                         }
                                         self.rankingTableView.reloadData()
@@ -61,7 +62,8 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         cell?.nameLabel.text = self.friends[indexPath.row].name
         cell?.userID = self.friends[indexPath.row].userID
-        cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)        
+        cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
+        cell?.studiedMinutesLabel.text = String(self.friends[indexPath.row].points)
         
         return cell!
     }
