@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 import AVFoundation
 
 class HelpMeStudy: UIViewController {
@@ -25,10 +26,40 @@ class HelpMeStudy: UIViewController {
     var studyTimer = Timer()
     var breakTimer = Timer()
     var rounds = 0
+    
+    func notificationBreak(){
+        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+        let content = UNMutableNotificationContent()
+        content.title = "Hey"
+        content.body = "Your study time is over. Enjoy your break!"
+        content.badge = 1
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let requestIdentifier = "Breakalert"
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+        })
+    }
+    
+    func notificationStudy(){
+        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+        let content = UNMutableNotificationContent()
+        content.title = "Hey"
+        content.body = "Your break is over. Go back to study!"
+        content.badge = 1
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let requestIdentifier = "Breakalert"
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+        })
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
+        
+        UNUserNotificationCenter.current().delegate = self
 
         UIView.animate(withDuration: 0.0) {
             self.timeLeftLabel.alpha = 0
@@ -72,6 +103,7 @@ class HelpMeStudy: UIViewController {
         print("studycounter")
         
         if studyMinutes == 0{
+            notificationBreak()
             studyTimer.invalidate()
             audioPlayer.play()
             startPause()
@@ -83,12 +115,13 @@ class HelpMeStudy: UIViewController {
         breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
         print("startpause")
     }
-
+    
     func breakCounter(){
         pauseMinutes -= 1
         timeLeftLabel.text = String(pauseMinutes)
         print("breakcounter")
         if pauseMinutes == 0{
+            notificationStudy()
             breakTimer.invalidate()
             audioPlayer.stop()
             startStudy(confirmButton)
@@ -159,4 +192,10 @@ class HelpMeStudy: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+}
+extension HelpMeStudy: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // some other way of handling notification
+        completionHandler([.alert, .sound])
+    }
 }

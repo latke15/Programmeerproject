@@ -51,7 +51,7 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         })
     }
-    
+    // source: http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value
     func sorterForFileIDASC(this:Friend, that:Friend) -> Bool {
         return this.points > that.points
     }

@@ -72,6 +72,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         var friend: Friend
         
         if (friendsTableView == self.searchDisplayController?.searchResultsTableView){
+            filterContentForSearchText(searchText: self.searchDisplayController!.searchBar.text!, scope: "Title")
             friend = self.filteredFriends[indexPath.row]
         }
         else{
