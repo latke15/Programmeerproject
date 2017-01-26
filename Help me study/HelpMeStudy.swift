@@ -91,18 +91,21 @@ class HelpMeStudy: UIViewController {
     }
     
     func updatePoints(points: Int) {
+        
         let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
         
         ref.child("users").child(uid).child("points").observeSingleEvent(of: .value, with: { snapshot in
             
-            if let points = snapshot.value as? [String : AnyObject] {
-                        ref.child("users").child(uid).child("points").setValue(points)
+            if var point = snapshot.value as? Int {
+                point += 1
+                ref.child("users").child(uid).child("points").setValue(point)
             }
         })
     }
 
     func studyCounter(){
+        
         studyMinutes -= 1
         timeLeftLabel.text = String(studyMinutes)
         points += 1
@@ -138,6 +141,7 @@ class HelpMeStudy: UIViewController {
         self.studyMinutes = minutes
         print("startstudy")
         studyTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
+        
         UIView.animate(withDuration: 0.4) {
             self.confirmButton.alpha = 0
             self.confirmButton.isUserInteractionEnabled = false

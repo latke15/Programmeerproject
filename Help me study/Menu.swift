@@ -24,7 +24,11 @@ class Menu: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func logOut(_ sender: Any) {
-        try! FIRAuth.auth()!.signOut()
+        do {
+            try! FIRAuth.auth()!.signOut()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 
 }

@@ -23,8 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "navVC") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
+        } else {
+            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "StartViewController") as UIViewController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = initialViewControlleripad
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
-        self.window?.makeKeyAndVisible()
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
@@ -54,6 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        // savePointsToFireRef(ref: String)
+        
     }
     // state restoration
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {

@@ -204,7 +204,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     print(error.localizedDescription)
                     self.showAlertView(title: "Error!", withDescription: "Please fill in the right email and password!", buttonText: "Ok, I will :)")
                 }
-                if let user = user{
+                if let user = user {
                     let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
                     self.present(vc, animated: true, completion: nil)
                 }
