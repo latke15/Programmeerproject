@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0288485A1E361EC600876E5B /* FriendRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028848591E361EC600876E5B /* FriendRankingCell.swift */; };
+		02AB49B31E3A26B00056BB7F /* AirHorn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02AB49B21E3A26B00056BB7F /* AirHorn.mp3 */; };
 		02C4FFA11E2E7C56004918A7 /* CL.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02C4FFA01E2E7C56004918A7 /* CL.mp3 */; };
 		02C96B681E277EE10021C03C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C96B671E277EE10021C03C /* AppDelegate.swift */; };
 		02C96B6A1E277EE10021C03C /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C96B691E277EE10021C03C /* Start.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		028848591E361EC600876E5B /* FriendRankingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRankingCell.swift; sourceTree = "<group>"; };
+		02AB49B21E3A26B00056BB7F /* AirHorn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AirHorn.mp3; sourceTree = "<group>"; };
 		02C4FFA01E2E7C56004918A7 /* CL.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CL.mp3; sourceTree = "<group>"; };
 		02C96B641E277EE10021C03C /* Help me study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Help me study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C96B671E277EE10021C03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		02C4FFA21E2E7C65004918A7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				02AB49B21E3A26B00056BB7F /* AirHorn.mp3 */,
 				02C4FFA01E2E7C56004918A7 /* CL.mp3 */,
 			);
 			name = Sounds;
@@ -215,6 +218,7 @@
 			files = (
 				02C96B721E277EE10021C03C /* LaunchScreen.storyboard in Resources */,
 				02E4F0A71E2F6CBB00E9533F /* GoogleService-Info.plist in Resources */,
+				02AB49B31E3A26B00056BB7F /* AirHorn.mp3 in Resources */,
 				02C4FFA11E2E7C56004918A7 /* CL.mp3 in Resources */,
 				02C96B6F1E277EE10021C03C /* Assets.xcassets in Resources */,
 				02C96B6D1E277EE10021C03C /* Main.storyboard in Resources */,

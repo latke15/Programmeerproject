@@ -22,9 +22,12 @@ class HelpMeStudy: UIViewController {
     var audioPlayer = AVAudioPlayer()
     var minutes: Int = 30
     var studyMinutes: Int = 0
+    var points: Int = 0
     var pauseMinutes: Int = 0
+    var musicSeconds: Int = 0
     var studyTimer = Timer()
     var breakTimer = Timer()
+    var musicTimer = Timer()
     var rounds = 0
     
     func notificationBreak(){
@@ -33,6 +36,7 @@ class HelpMeStudy: UIViewController {
         content.title = "Hey"
         content.body = "Your study time is over. Enjoy your break!"
         content.badge = 1
+        content.sound = UNNotificationSound.init(named: "CL.mp3")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let requestIdentifier = "Breakalert"
@@ -47,6 +51,8 @@ class HelpMeStudy: UIViewController {
         content.title = "Hey"
         content.body = "Your break is over. Go back to study!"
         content.badge = 1
+        content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
+
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let requestIdentifier = "Breakalert"
@@ -100,12 +106,12 @@ class HelpMeStudy: UIViewController {
     func studyCounter(){
         studyMinutes -= 1
         timeLeftLabel.text = String(studyMinutes)
+        points += 1
         print("studycounter")
         
         if studyMinutes == 0{
             notificationBreak()
             studyTimer.invalidate()
-            audioPlayer.play()
             startPause()
             rounds += 1
         }
@@ -123,20 +129,9 @@ class HelpMeStudy: UIViewController {
         if pauseMinutes == 0{
             notificationStudy()
             breakTimer.invalidate()
-            audioPlayer.stop()
             startStudy(confirmButton)
         }
     }
-    
-//    func musicCounter(){
-//        minutes = Int(0.1)
-//        minutes -= 1
-//        timeLeftLabel.text = String(minutes)
-//        
-//        if minutes == 0{
-//            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
-//        }
-//    }
     
     @IBAction func startStudy(_ sender: Any) {
         studyTimer.invalidate()

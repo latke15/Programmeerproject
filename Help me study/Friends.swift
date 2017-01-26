@@ -46,7 +46,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         self.filteredFriends = self.friends.filter({( friend: Friend) -> Bool in
             
             let categoryMatch = (scope == "Title")
-            let stringMatch = friend.name.contains(searchText)
+            let stringMatch = friend.name.localizedCaseInsensitiveContains(searchText)
             
             return categoryMatch && (stringMatch != nil)
         })
