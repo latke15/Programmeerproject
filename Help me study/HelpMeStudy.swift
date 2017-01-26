@@ -8,7 +8,7 @@
 
 import UIKit
 import UserNotifications
-import AVFoundation
+import Firebase
 
 class HelpMeStudy: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
@@ -19,16 +19,14 @@ class HelpMeStudy: UIViewController {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
-    var audioPlayer = AVAudioPlayer()
     var minutes: Int = 30
     var studyMinutes: Int = 0
     var points: Int = 0
     var pauseMinutes: Int = 0
-    var musicSeconds: Int = 0
     var studyTimer = Timer()
     var breakTimer = Timer()
-    var musicTimer = Timer()
-    var rounds = 0
+    var friends = [Friend]()
+    var ref: FIRDatabaseReference!
     
     func notificationBreak(){
         // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
@@ -76,17 +74,6 @@ class HelpMeStudy: UIViewController {
             
             self.stopButton.alpha = 0
             self.stopButton.isUserInteractionEnabled = false
-            
-            do
-            {
-                let audioPath = Bundle.main.path(forResource: "CL", ofType: ".mp3")
-                try self.audioPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
-            }
-            catch
-            {
-                //ERROR
-            }
-
         }
     }
     
@@ -102,23 +89,35 @@ class HelpMeStudy: UIViewController {
         }
         
     }
+    
+    func updatePoints(points: Int) {
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        let ref = FIRDatabase.database().reference()
+        
+        ref.child("users").child(uid).child("points").observeSingleEvent(of: .value, with: { snapshot in
+            
+            if let points = snapshot.value as? [String : AnyObject] {
+                        ref.child("users").child(uid).child("points").setValue(points)
+            }
+        })
+    }
 
     func studyCounter(){
         studyMinutes -= 1
         timeLeftLabel.text = String(studyMinutes)
         points += 1
+        print(points)
+        updatePoints(points: points)
         print("studycounter")
-        
         if studyMinutes == 0{
             notificationBreak()
             studyTimer.invalidate()
             startPause()
-            rounds += 1
         }
     }
     func startPause(){
-        pauseMinutes = 5
-        breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
+        pauseMinutes = 1
+        breakTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
         print("startpause")
     }
     
@@ -178,7 +177,6 @@ class HelpMeStudy: UIViewController {
     @IBAction func stopStudy(_ sender: Any) {
         studyTimer.invalidate()
         breakTimer.invalidate()
-        audioPlayer.stop()
         minutes = 30
         timeSlider.setValue(30, animated: true)
         studyTimeLabel.text = "30"
