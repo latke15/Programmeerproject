@@ -51,6 +51,10 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         })
     }
+    
+    func sorterForFileIDASC(this:Friend, that:Friend) -> Bool {
+        return this.points > that.points
+    }
 
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,6 +64,8 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = rankingTableView.dequeueReusableCell(withIdentifier: "friendRankingCell", for: indexPath) as? FriendRankingCell
         
+        friends.sort(by: sorterForFileIDASC)
+
         cell?.nameLabel.text = self.friends[indexPath.row].name
         cell?.userID = self.friends[indexPath.row].userID
         cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
