@@ -48,5 +48,6 @@ Friends.retrieveUsers()<br>
 StartViewController.register(Any)<br>
 Rankings.followingUsers()<br>
 
+#### Results
 [![BCH compliance](https://bettercodehub.com/edge/badge/latke15/Programmeerproject)]
 (https://bettercodehub.com)
