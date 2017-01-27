@@ -37,4 +37,3 @@ Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. D
 ## Better Code Hub
 [![BCH compliance](https://bettercodehub.com/edge/badge/latke15/Programmeerproject)]
 (https://bettercodehub.com)
-<img src='https://bettercodehub.com/edge/badge/latke15/Programmeerproject'>
