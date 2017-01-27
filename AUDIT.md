@@ -15,3 +15,6 @@ Rankings.followingUsers()<br>
 #### Results
 [![BCH compliance](https://bettercodehub.com/edge/badge/latke15/Programmeerproject)]
 (https://bettercodehub.com)
+
+![Screenshot of the rank]
+(/doc/Inlogscherm.png)
