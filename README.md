@@ -35,5 +35,18 @@ Bij deze applicatie zijn er een aantal problemen die ik nu voorzie waar ik tegen
 Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. Deze applicaties visualiseren de timer op een mooie manier, geven grafieken van de hoeveelheid tijd die je gestudeerd hebt en wanneer. Hiermee zou je dus kunnen kijken op welk moment van de dag de gebruiker het vaakst studeert. 
 
 ## Better Code Hub
+### Tasklist
+#### Write Short Units of Code<br>
+StartViewController.register(Any)<br>
+StartViewController.logRegSwitch(Any)<br>
+Rankings.followingUsers()<br>
+Friends.tableView(UITableView,IndexPath)<br>
+HelpMeStudy.startStudy(Any)<br>
+Friends.retrieveUsers()<br>
+
+#### Write Simple Units of Code<br>
+StartViewController.register(Any)<br>
+Rankings.followingUsers()<br>
+
 [![BCH compliance](https://bettercodehub.com/edge/badge/latke15/Programmeerproject)]
 (https://bettercodehub.com)
