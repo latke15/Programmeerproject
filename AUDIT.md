@@ -17,4 +17,4 @@ Rankings.followingUsers()<br>
 (https://bettercodehub.com)
 
 ![Screenshot of the rank]
-(/doc/Inlogscherm.png)
+(/doc/rank.png)
