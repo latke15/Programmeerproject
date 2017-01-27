@@ -13,4 +13,10 @@ Helaas voel ik mij alleen maar slechter, wat ook geen positieve invloed heeft op
 
 ## Week 2
 ### Day 1
-Omdat ik 
+Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worden gemaakt. De basis voor de registratie- en de inlogmogelijkheid is gelegd. 
+
+### Day 2 
+De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkheid is nog verder uitgewerkt.
+
+### Day 3
+
