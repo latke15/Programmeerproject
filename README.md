@@ -33,3 +33,8 @@ Er dient voor deze applicatie data opgeslagen te worden, dit wordt gedaan door m
 Bij deze applicatie zijn er een aantal problemen die ik nu voorzie waar ik tegenaan ga lopen. Zo is het inschakelen van de ‘Niet storen’ modus nog maar de vraag of dit mogelijk is. Het toevoegen van vrienden is een ander obstakel waar nog best veel tijd in gaat zitten om dat voor elkaar te krijgen. In principe moet dit lukken, maar als deze problemen niet kunnen worden opgelost zal er of een alternatief gevonden moeten worden of het idee wordt geschrapt. Dit zijn dan ook de onderdelen die niet bij de MVP (Minimum Viable Product) horen, maar als het lukt is het zeker weten mooi meegenomen
 ## Verwante applicaties
 Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. Deze applicaties visualiseren de timer op een mooie manier, geven grafieken van de hoeveelheid tijd die je gestudeerd hebt en wanneer. Hiermee zou je dus kunnen kijken op welk moment van de dag de gebruiker het vaakst studeert. 
+
+## Better Code Hub
+[![BCH compliance](https://bettercodehub.com/edge/badge/latke15/Programmeerproject)]
+(https://bettercodehub.com)
+<img src='https://bettercodehub.com/edge/badge/latke15/Programmeerproject'>
