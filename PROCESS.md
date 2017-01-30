@@ -10,3 +10,13 @@ De eerste teambesprekingen vonden plaats. Helaas ben ik ziek wakker geworden waa
 Ik voelde me iets beter dus besloot om naar de universiteit te gaan. Ik ben vroegtijdig weer naar huis gegaan. Niet veel vooruitgang is geboekt.
 ### Day 5
 Helaas voel ik mij alleen maar slechter, wat ook geen positieve invloed heeft op de vorderingen van het project.
+
+## Week 2
+### Day 1
+Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worden gemaakt. De basis voor de registratie- en de inlogmogelijkheid is gelegd. 
+
+### Day 2 
+De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkheid is nog verder uitgewerkt.
+
+### Day 3
+
