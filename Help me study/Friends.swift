@@ -9,15 +9,19 @@
 import UIKit
 import Firebase
 
-class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
+class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
     @IBOutlet weak var friendsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var friends = [Friend]()
     var filteredFriends = [Friend]()
+    
+    var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveUsers()
-    }
+        searchBar.delegate = self
+        }
     
     func retrieveUsers() {
         let ref = FIRDatabase.database().reference()
@@ -42,26 +46,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         ref.removeAllObservers()
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "Title"){
-        self.filteredFriends = self.friends.filter({( friend: Friend) -> Bool in
-            
-            let categoryMatch = (scope == "Title")
-            let stringMatch = friend.name.localizedCaseInsensitiveContains(self.searchDisplayController!.searchBar.text!)
-            
-            return categoryMatch && (stringMatch != nil)
-        })
-    }
-    
-//    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
-//        self.filterContentForSearchText(searchText: searchString!, scope: "Title")
-//        return true
-//    }
-//    
-//    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-//        self.filterContentForSearchText(searchText: (self.searchDisplayController!.searchBar.text)!, scope: "Title")
-//        return true
-//    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -69,33 +53,46 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
-        var friend: Friend
-        
-        if (friendsTableView == self.searchDisplayController?.searchResultsTableView){
-            filterContentForSearchText(searchText: self.searchDisplayController!.searchBar.text!, scope: "Title")
-            friend = self.filteredFriends[indexPath.row]
-        }
-        else{
-            friend = self.friends[indexPath.row]
-        }
-        cell?.nameLabel.text = self.friends[indexPath.row].name
-        cell?.userID = self.friends[indexPath.row].userID
-        cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
-        checkFollowing(indexPath: indexPath)
+        let array = isSearching ? self.filteredFriends : self.friends
+        cell?.nameLabel.text = array[indexPath.row].name
+        cell?.userID = array[indexPath.row].userID
+        cell?.profilePicture.downloadImage(from: array[indexPath.row].imagePath)
+        checkFollowing(indexPath: indexPath, isSearching: isSearching)
+
         return cell!
+        self.friendsTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return isSearching ? filteredFriends.count ?? 0 : friends.count ?? 0
+    }
+    
+    // This method updates filteredData based on the text in the Search Box
+    // Source: https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredFriends = searchText.isEmpty ? friends : friends.filter({(friendsString: Friend) -> Bool in
+            return friendsString.name.range(of: searchText, options: .caseInsensitive) != nil
+        })
         
-        if (friendsTableView == self.searchDisplayController?.searchResultsTableView){
-            return filteredFriends.count
-        }
-        else{
-            return friends.count ?? 0
-        }
+        friendsTableView.reloadData()
+    }
+    
+    // Source: https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+        self.searchBar.showsCancelButton = true
+    }
+    
+    // Source: https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let array = isSearching ? self.filteredFriends : self.friends
         
         let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
@@ -107,22 +104,22 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             
             if let following = snapshot.value as? [String : AnyObject] {
                 for (ke, value) in following {
-                    if value as! String == self.friends[indexPath.row].userID {
+                    if value as! String == array[indexPath.row].userID {
                         isFollowing = true
                         
                         ref.child("users").child(uid).child("following/\(ke)").removeValue()
-                        ref.child("users").child(self.friends[indexPath.row].userID).child("followers/\(ke)").removeValue()
+                        ref.child("users").child(array[indexPath.row].userID).child("followers/\(ke)").removeValue()
                         
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
                     }
                 }
             }
             if !isFollowing {
-                let following = ["following/\(key)" : self.friends[indexPath.row].userID]
+                let following = ["following/\(key)" : array[indexPath.row].userID]
                 let followers = ["followers/\(key)" : uid]
                 
                 ref.child("users").child(uid).updateChildValues(following)
-                ref.child("users").child(self.friends[indexPath.row].userID).updateChildValues(followers)
+                ref.child("users").child(array[indexPath.row].userID).updateChildValues(followers)
                 
                 self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             }
@@ -132,7 +129,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
     }
 
-    func checkFollowing(indexPath: IndexPath) {
+    func checkFollowing(indexPath: IndexPath, isSearching: Bool) {
         let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
         
@@ -140,7 +137,10 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             
             if let following = snapshot.value as? [String : AnyObject] {
                 for (_, value) in following {
-                    if value as! String == self.friends[indexPath.row].userID {
+                    
+                    let array = isSearching ? self.filteredFriends : self.friends
+                    
+                    if value as! String == array[indexPath.row].userID {
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                     }
                 }
