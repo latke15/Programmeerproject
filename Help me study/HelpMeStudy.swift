@@ -129,7 +129,7 @@ class HelpMeStudy: UIViewController {
         timeLeftLabel.text = String(pauseMinutes)
         print("breakcounter")
         if pauseMinutes == 0{
-            notificationStudy()
+            //notificationStudy()
             breakTimer.invalidate()
             startStudy(confirmButton)
         }

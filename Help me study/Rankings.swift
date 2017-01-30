@@ -78,6 +78,7 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return friends.count ?? 0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.friends[indexPath.row].name)
         rankingTableView.deselectRow(at: indexPath, animated: true)
     }
 

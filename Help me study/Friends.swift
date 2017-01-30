@@ -46,21 +46,21 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         self.filteredFriends = self.friends.filter({( friend: Friend) -> Bool in
             
             let categoryMatch = (scope == "Title")
-            let stringMatch = friend.name.localizedCaseInsensitiveContains(searchText)
+            let stringMatch = friend.name.localizedCaseInsensitiveContains(self.searchDisplayController!.searchBar.text!)
             
             return categoryMatch && (stringMatch != nil)
         })
     }
     
-    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
-        self.filterContentForSearchText(searchText: searchString!, scope: "Title")
-        return true
-    }
-    
-    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        self.filterContentForSearchText(searchText: (self.searchDisplayController!.searchBar.text)!, scope: "Title")
-        return true
-    }
+//    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearch searchString: String?) -> Bool {
+//        self.filterContentForSearchText(searchText: searchString!, scope: "Title")
+//        return true
+//    }
+//    
+//    func searchDisplayController(_ controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+//        self.filterContentForSearchText(searchText: (self.searchDisplayController!.searchBar.text)!, scope: "Title")
+//        return true
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
