@@ -98,14 +98,6 @@
                                     <action selector="selectPicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Z3-rp-mNq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjK-Le-PpJ">
-                                <rect key="frame" x="284" y="512" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="3DU-jp-L2H" kind="show" id="I9a-Py-20H"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -126,51 +118,6 @@
             </objects>
             <point key="canvasLocation" x="872.79999999999995" y="131.78410794602701"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="pVq-y5-Fcc">
-            <objects>
-                <viewController id="3DU-jp-L2H" customClass="ViewController" customModule="Help_me_study" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QmR-5g-29h"/>
-                        <viewControllerLayoutGuide type="bottom" id="o9c-7z-Lb2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KxP-7t-3iH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hth-8F-GuZ">
-                                <rect key="frame" x="139" y="114" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9U-PD-UWb">
-                                <rect key="frame" x="139" y="185" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laL-lX-9aC">
-                                <rect key="frame" x="139" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="buttonClicked:" destination="3DU-jp-L2H" eventType="touchUpInside" id="oef-Eh-FK9"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="label" destination="hth-8F-GuZ" id="XLd-mA-yfg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7hA-sH-8E2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="893" y="795"/>
-        </scene>
         <!--Menu Controller-->
         <scene sceneID="boN-n4-NlU">
             <objects>
@@ -184,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="FriendsButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTT-KB-tsZ">
-                                <rect key="frame" x="64" y="82" width="67" height="86"/>
+                                <rect key="frame" x="64" y="160" width="67" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Users">
                                     <color key="titleColor" red="0.015683278441429138" green="0.015688259154558182" blue="0.015681706368923187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -193,8 +140,18 @@
                                     <segue destination="vp6-Wh-BYX" kind="show" id="Mlj-6L-8KP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="InfoButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxn-OG-Vgc">
+                                <rect key="frame" x="64" y="450" width="67" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Info">
+                                    <color key="titleColor" red="0.01568327844" green="0.015688259150000002" blue="0.01568170637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vno-gN-alo" kind="show" id="g7v-hS-84E"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="RankingsButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pvx-N6-adI">
-                                <rect key="frame" x="249" y="82" width="67" height="86"/>
+                                <rect key="frame" x="237" y="160" width="67" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Rankings">
                                     <color key="titleColor" red="0.015683278441429138" green="0.015688259154558182" blue="0.015681706368923187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -204,7 +161,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="HelpMeStudyButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11H-Pc-KWr">
-                                <rect key="frame" x="64" y="451" width="252" height="86"/>
+                                <rect key="frame" x="198" y="450" width="118" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Help me study">
                                     <color key="titleColor" red="0.015683278441429138" green="0.015688259154558182" blue="0.015681706368923187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -213,6 +170,13 @@
                                     <segue destination="VyA-Kq-l89" kind="show" id="cMn-U1-yoS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIY-d1-LGB">
+                                <rect key="frame" x="32" y="64" width="288" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -229,12 +193,13 @@
                         <outlet property="friendsButton" destination="mTT-KB-tsZ" id="olN-gv-ukS"/>
                         <outlet property="helpMeStudyButton" destination="11H-Pc-KWr" id="6cS-zv-HCt"/>
                         <outlet property="logOutButton" destination="A5L-Z8-kja" id="PDC-CE-UcQ"/>
+                        <outlet property="nameLabel" destination="fIY-d1-LGB" id="C7S-OX-Qz4"/>
                         <outlet property="rankingsButton" destination="Pvx-N6-adI" id="9rS-1i-u3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wr3-bM-tpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2892" y="113"/>
+            <point key="canvasLocation" x="2891.1999999999998" y="112.89355322338831"/>
         </scene>
         <!--Help me study-->
         <scene sceneID="eje-LO-l0y">
@@ -325,6 +290,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO4-iv-ums" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2985" y="925"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="t0a-1t-ZEL">
+            <objects>
+                <viewController id="Vno-gN-alo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pk9-C4-Auw"/>
+                        <viewControllerLayoutGuide type="bottom" id="9BI-Ok-Fpa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxC-bv-kww">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-cz-wV2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. Enjoy and study hard!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jdw-kk-OjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3769.5999999999999" y="480.80959520239884"/>
         </scene>
         <!--Friends-->
         <scene sceneID="xrP-0e-HSA">

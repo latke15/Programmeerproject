@@ -14,6 +14,7 @@ class Menu: UIViewController {
     @IBOutlet weak var friendsButton: UIButton!
     @IBOutlet weak var rankingsButton: UIButton!
     @IBOutlet weak var helpMeStudyButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     
@@ -21,6 +22,9 @@ class Menu: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let user = FIRAuth.auth()?.currentUser
+        nameLabel.text = "Welcome, " + (user?.displayName)! + "!"
+
         // Do any additional setup after loading the view.
     }
     @IBAction func logOut(_ sender: Any) {

@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        showAlertView(title: "HEY!", withDescription: "Please keep in mind that if you leave the application, the timer will stop.", buttonText: "Ok, thanks")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -71,6 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // savePointsToFireRef(ref: String)
         
+    }
+    // Show an alert
+    func showAlertView(title: String, withDescription description: String, buttonText text: String) {
+        let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: text, style: .default, handler: nil)
+        alertController.addAction(alertAction)
     }
 }
 
