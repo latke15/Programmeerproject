@@ -48,6 +48,6 @@ Bij de presenaties is vooral gelet op de codekwaliteit met behulp van Bettercode
 De search bar werkt bijna, maar er zit een fout in en het lukt mij niet deze op te lossen.
 
 ### Day 2
-Nog steeds zit er een fout in mijn search bar, alhoewel deze al wel is verbeterd. Nog wat layout is gedaan vandaag. Er is tevens een begin gemaakt aan het verslag.
+Nog steeds zit er een fout in mijn search bar, alhoewel deze al wel is verbeterd. Zelfs met hulp, is het niet gelukt. Nog wat layout is gedaan vandaag. Er is tevens een begin gemaakt aan het verslag.
 
 ### Day 3
