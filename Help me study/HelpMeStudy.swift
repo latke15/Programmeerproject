@@ -28,19 +28,21 @@ class HelpMeStudy: UIViewController {
     var friends = [Friend]()
     var ref: FIRDatabaseReference!
     
-    func notificationBreak(){
+    func notificationBreak(triggerDate: Date){
         // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-        let content = UNMutableNotificationContent()
-        content.title = "Hey"
-        content.body = "Your study time is over. Enjoy your break!"
-        content.badge = 1
-        content.sound = UNNotificationSound.init(named: "CL.mp3")
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let requestIdentifier = "Breakalert"
-        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-        })
+        let content = UILocalNotification()
+        content.alertTitle = "Hey"
+        content.alertBody = "Your study time is over. Enjoy your break!"
+        content.fireDate = triggerDate as Date
+        UIApplication.shared.scheduleLocalNotification(content)
+    }
+    func notificationStudy(triggerDate: Date){
+        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+        let content = UILocalNotification()
+        content.alertTitle = "Hey"
+        content.alertBody = "Your break is over. Go study!"
+        content.fireDate = triggerDate as Date
+        UIApplication.shared.scheduleLocalNotification(content)
     }
     
     func notificationStudy(){
@@ -105,7 +107,7 @@ class HelpMeStudy: UIViewController {
     }
 
     func studyCounter(){
-        
+    
         studyMinutes -= 1
         timeLeftLabel.text = String(studyMinutes)
         points += 1
@@ -113,14 +115,18 @@ class HelpMeStudy: UIViewController {
         updatePoints(points: points)
         print("studycounter")
         if studyMinutes == 0{
-            notificationBreak()
+//            notificationBreak()
             studyTimer.invalidate()
             startPause()
         }
     }
     func startPause(){
-        pauseMinutes = 1
+        pauseMinutes = 5
+        var startDate = NSDate()
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .second, value: pauseMinutes, to: startDate as Date)
         breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
+        notificationStudy(triggerDate: date!)
         print("startpause")
     }
     
@@ -140,6 +146,11 @@ class HelpMeStudy: UIViewController {
         breakTimer.invalidate()
         self.studyMinutes = minutes
         print("startstudy")
+        
+        var startDate = NSDate()
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .second, value: self.studyMinutes, to: startDate as Date)
+        notificationBreak(triggerDate: date!)
         studyTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
         
         UIView.animate(withDuration: 0.4) {
