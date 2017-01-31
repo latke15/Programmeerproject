@@ -53,18 +53,24 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
-        let array = isSearching ? self.filteredFriends : self.friends
-        cell?.nameLabel.text = array[indexPath.row].name
-        cell?.userID = array[indexPath.row].userID
-        cell?.profilePicture.downloadImage(from: array[indexPath.row].imagePath)
+        if isSearching == true{
+            cell?.nameLabel.text = filteredFriends[indexPath.row].name
+            cell?.userID = filteredFriends[indexPath.row].userID
+            cell?.profilePicture.downloadImage(from: filteredFriends[indexPath.row].imagePath)
+        }
+        else{
+            cell?.nameLabel.text = friends[indexPath.row].name
+            cell?.userID = friends[indexPath.row].userID
+            cell?.profilePicture.downloadImage(from: friends[indexPath.row].imagePath)
+        }
+        
         checkFollowing(indexPath: indexPath, isSearching: isSearching)
 
         return cell!
-        self.friendsTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? filteredFriends.count ?? 0 : friends.count ?? 0
+        return isSearching ? filteredFriends.count: friends.count
     }
     
     // This method updates filteredData based on the text in the Search Box
@@ -89,6 +95,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        self.friendsTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -126,7 +133,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         })
         ref.removeAllObservers()
         friendsTableView.deselectRow(at: indexPath, animated: true)
-        
     }
 
     func checkFollowing(indexPath: IndexPath, isSearching: Bool) {
@@ -139,7 +145,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                 for (_, value) in following {
                     
                     let array = isSearching ? self.filteredFriends : self.friends
-                    
                     if value as! String == array[indexPath.row].userID {
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                     }
