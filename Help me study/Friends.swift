@@ -144,7 +144,10 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             if let following = snapshot.value as? [String : AnyObject] {
                 for (_, value) in following {
                     
-                    let array = isSearching ? self.filteredFriends : self.friends
+                    var array = isSearching ? self.filteredFriends : self.friends
+                    if array.count == 0 {
+                        return
+                    }
                     if value as! String == array[indexPath.row].userID {
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                     }

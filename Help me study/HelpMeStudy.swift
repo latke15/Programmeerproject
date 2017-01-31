@@ -75,14 +75,6 @@ class HelpMeStudy: UIViewController {
             self.stopButton.alpha = 0
             self.stopButton.isUserInteractionEnabled = false
         }
-        
-        let date = Date()
-        let calendar = Calendar.current
-        
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
-        print("hours = \(hour):\(minutes):\(seconds)")
     }
     
     @IBAction func slider(_ sender: UISlider) {
@@ -128,7 +120,7 @@ class HelpMeStudy: UIViewController {
     }
     func startPause(){
         pauseMinutes = 1
-        breakTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
+        breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
         print("startpause")
     }
     
@@ -204,3 +196,4 @@ extension HelpMeStudy: UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound])
     }
 }
+
