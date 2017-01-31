@@ -158,10 +158,12 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                     if array.count == 0 {
                         return
                     }
-                    
-                    print("Index Path 2: \(indexPath.row)")
-                    print("Length array 2: \(array.count)")
-                    print("----")
+                    if isSearching {
+                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
+                    }
+                    if !isSearching {
+                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                    }
                     
                     if value as! String == array[indexPath.row].userID {
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
