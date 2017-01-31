@@ -41,4 +41,13 @@ Punten zijn handmatig toegevoegd aan Firebase om te kijken of het ordenen van de
 Notificaties zijn toegevoegd, de punten worden automatisch geüpdate, layout is weer bijgwerkt.
 
 ### Day 5
-B
+Bij de presenaties is vooral gelet op de codekwaliteit met behulp van Bettercodehub. Een aantal tips die gegeven werden zijn handig en ga ik proberen toe te passen.
+
+## Week 4
+### Day 1
+De search bar werkt bijna, maar er zit een fout in en het lukt mij niet deze op te lossen.
+
+### Day 2
+Nog steeds zit er een fout in mijn search bar, alhoewel deze al wel is verbeterd. Nog wat layout is gedaan vandaag. Er is tevens een begin gemaakt aan het verslag.
+
+### Day 3
