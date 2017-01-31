@@ -41,6 +41,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                     }
                 }
             }
+            self.filteredFriends = self.friends
             self.friendsTableView.reloadData()
         })
         ref.removeAllObservers()
@@ -53,24 +54,31 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
-        if isSearching == true{
+//        if isSearching == true{
             cell?.nameLabel.text = filteredFriends[indexPath.row].name
             cell?.userID = filteredFriends[indexPath.row].userID
             cell?.profilePicture.downloadImage(from: filteredFriends[indexPath.row].imagePath)
-        }
-        else{
-            cell?.nameLabel.text = friends[indexPath.row].name
-            cell?.userID = friends[indexPath.row].userID
-            cell?.profilePicture.downloadImage(from: friends[indexPath.row].imagePath)
-        }
         
-        checkFollowing(indexPath: indexPath, isSearching: isSearching)
+        print("Index Path: \(indexPath.row)")
+        print("Length array: \(filteredFriends.count)")
+        
+//        }
+//        else{
+//            cell?.nameLabel.text = friends[indexPath.row].name
+//            cell?.userID = friends[indexPath.row].userID
+//            cell?.profilePicture.downloadImage(from: friends[indexPath.row].imagePath)
+//        }
+        
+        if !isSearching {
+            checkFollowing(indexPath: indexPath, isSearching: isSearching)
+        }
 
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? filteredFriends.count: friends.count
+//        return isSearching ? filteredFriends.count: friends.count
+        return filteredFriends.count
     }
     
     // This method updates filteredData based on the text in the Search Box
@@ -95,6 +103,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        self.filteredFriends = self.friends
         self.friendsTableView.reloadData()
     }
     
@@ -130,6 +139,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                 
                 self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             }
+
         })
         ref.removeAllObservers()
         friendsTableView.deselectRow(at: indexPath, animated: true)
@@ -144,17 +154,25 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             if let following = snapshot.value as? [String : AnyObject] {
                 for (_, value) in following {
                     
-                    var array = isSearching ? self.filteredFriends : self.friends
+                    var array = self.filteredFriends
                     if array.count == 0 {
                         return
                     }
+                    
+                    print("Index Path 2: \(indexPath.row)")
+                    print("Length array 2: \(array.count)")
+                    print("----")
+                    
                     if value as! String == array[indexPath.row].userID {
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                     }
                 }
             }
+            
+            self.retrieveUsers()
         })
         ref.removeAllObservers()
+        
     }
 }
 

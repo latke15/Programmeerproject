@@ -16,7 +16,6 @@ class HelpMeStudy: UIViewController {
     @IBOutlet weak var studyTimeLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var timeLeftLabel: UILabel!
-    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
     var minutes: Int = 30
@@ -71,6 +70,22 @@ class HelpMeStudy: UIViewController {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
         })
     }
+    
+    func notificationBreak(){
+        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+        let content = UNMutableNotificationContent()
+        content.title = "Hey"
+        content.body = "Your break is over. Go back to study!"
+        content.badge = 1
+        content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let requestIdentifier = "Breakalert"
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+        })
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +96,6 @@ class HelpMeStudy: UIViewController {
         UIView.animate(withDuration: 0.0) {
             self.timeLeftLabel.alpha = 0
             self.timeLeftLabel.isUserInteractionEnabled = false
-            
-            self.pauseButton.alpha = 0
-            self.pauseButton.isUserInteractionEnabled = false
             
             self.stopButton.alpha = 0
             self.stopButton.isUserInteractionEnabled = false
@@ -117,40 +129,40 @@ class HelpMeStudy: UIViewController {
         })
     }
 
-//    func studyCounter(){
-//    
-//        studyMinutes -= 1
-//        timeLeftLabel.text = String(studyMinutes)
-//        points += 1
-//        print(points)
-//        updatePoints(points: points)
-//        print("studycounter")
-//        if studyMinutes == 0{
-////            notificationBreak()
-//            studyTimer.invalidate()
-//            startPause()
-//        }
-//    }
-//    func startPause(){
-//        pauseMinutes = 5
+    func studyCounter(){
+    
+        studyMinutes -= 1
+        timeLeftLabel.text = String(studyMinutes)
+        points += 1
+        print(points)
+        updatePoints(points: points)
+        print("studycounter")
+        if studyMinutes == 0{
+            notificationBreak()
+            studyTimer.invalidate()
+            startPause()
+        }
+    }
+    func startPause(){
+        pauseMinutes = 5
 //        var startDate = NSDate()
 //        let calendar = Calendar.current
 //        let date = calendar.date(byAdding: .second, value: pauseMinutes, to: startDate as Date)
-//        breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
+        breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
 //        notificationStudy(triggerDate: date!)
-//        print("startpause")
-//    }
-//    
-//    func breakCounter(){
-//        pauseMinutes -= 1
-//        timeLeftLabel.text = String(pauseMinutes)
-//        print("breakcounter")
-//        if pauseMinutes == 0{
-//            //notificationStudy()
-//            breakTimer.invalidate()
-//            startStudy(confirmButton)
-//        }
-//    }
+        print("startpause")
+    }
+    
+    func breakCounter(){
+        pauseMinutes -= 1
+        timeLeftLabel.text = String(pauseMinutes)
+        print("breakcounter")
+        if pauseMinutes == 0{
+            notificationStudy()
+            breakTimer.invalidate()
+            startStudy(confirmButton)
+        }
+    }
     
     @IBAction func startStudy(_ sender: Any) {
         studyTimer.invalidate()
@@ -158,19 +170,19 @@ class HelpMeStudy: UIViewController {
         self.studyMinutes = minutes
         print("startstudy")
         
-        var startDate = NSDate()
-        let calendar = Calendar.current
-        let studyDate1 = calendar.date(byAdding: .second, value: self.studyMinutes, to: startDate as Date)
-        notificationBreak(triggerDate: studyDate1!)
-        let breakDate1 = calendar.date(byAdding: .second, value: self.pauseMinutes, to: studyDate1! as Date)
-        notificationStudy(triggerDate: breakDate1!)
-        let studyDate2 = calendar.date(byAdding: .second, value: self.studyMinutes, to: breakDate1! as Date)
-        notificationBreak(triggerDate: studyDate2!)
-        let bigBreak = calendar.date(byAdding: .second, value: self.bigBreakMinutes, to: studyDate2! as Date)
-        notificationBigBreak(triggerDate: bigBreak!)
+//        var startDate = NSDate()
+//        let calendar = Calendar.current
+//        let studyDate1 = calendar.date(byAdding: .second, value: self.studyMinutes, to: startDate as Date)
+//        notificationBreak(triggerDate: studyDate1!)
+//        let breakDate1 = calendar.date(byAdding: .second, value: self.pauseMinutes, to: studyDate1! as Date)
+//        notificationStudy(triggerDate: breakDate1!)
+//        let studyDate2 = calendar.date(byAdding: .second, value: self.studyMinutes, to: breakDate1! as Date)
+//        notificationBreak(triggerDate: studyDate2!)
+//        let bigBreak = calendar.date(byAdding: .second, value: self.bigBreakMinutes, to: studyDate2! as Date)
+//        notificationBigBreak(triggerDate: bigBreak!)
         
         
-//        studyTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
+        studyTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
         
         UIView.animate(withDuration: 0.4) {
             self.confirmButton.alpha = 0
@@ -188,23 +200,8 @@ class HelpMeStudy: UIViewController {
             self.timeLeftLabel.alpha = 1
             self.timeLeftLabel.isUserInteractionEnabled = true
             
-            self.pauseButton.alpha = 1
-            self.pauseButton.isUserInteractionEnabled = true
-            
             self.stopButton.alpha = 1
             self.stopButton.isUserInteractionEnabled = true
-        }
-    }
-    
-    @IBAction func pauseStudy(_ sender: Any) {
-        if pauseButton.currentTitle == "Pause"{
-            studyTimer.invalidate()
-            breakTimer.invalidate()
-            pauseButton.setTitle("Play", for: .normal)
-        }
-        if pauseButton.currentTitle == "Play"{
-            startStudy(confirmButton)
-            pauseButton.setTitle("Pause", for: .normal)
         }
     }
     
@@ -214,19 +211,29 @@ class HelpMeStudy: UIViewController {
         minutes = 30
         timeSlider.setValue(30, animated: true)
         studyTimeLabel.text = "30"
-        let refreshAlert = UIAlertController(title: "Error!", message: "Are you sure you want to stop studying?", preferredStyle: UIAlertControllerStyle.alert)
+        showAlertView(title: "Error!", withDescription: "Winners never quit and quitters never win.", buttonText: "Ok")
+        let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
+        self.present(vc, animated: true, completion: nil)
         
+        // source: http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
+        let refreshAlert = UIAlertController(title: "Error!", message: "Are you sure you want to stop studying?", preferredStyle: UIAlertControllerStyle.alert)
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
             self.present(vc, animated: true, completion: nil)
         }))
-        
         refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            self.studyTimer.fire()
+            self.breakTimer.fire()
             return
         }))
         present(refreshAlert, animated: true, completion: nil)
     }
-    
+    // Show an alert
+    func showAlertView(title: String, withDescription description: String, buttonText text: String) {        let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: text, style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 extension HelpMeStudy: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
