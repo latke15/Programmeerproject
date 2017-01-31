@@ -19,4 +19,35 @@ Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worde
 De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkheid is nog verder uitgewerkt.
 
 ### Day 3
+De registratie- en de inlogmogelijkheid werken beiden. Dit heeft best wat tijd gekost, maar ik ben erg tevreden dat het gelukt is. 
 
+### Day 4
+Layout is bijgewerkt, er is verder gegaan met de timer en deze werkt nu stukken beter.
+
+### Day 5
+Vandaag zijn presentaties. Aangezien ik gemerkt heb dat ik achterloop vanwege het feit dat ik ziek was, moet het volgende weken allemaal net wat sneller. Een aantal goede tips zijn verkregen en worden over gedacht tijdens het weekend.
+
+## Week 2
+### Day 1
+De users werken, follow en unfollow werken, bugs zijn opgelost, de gevolgde mensen willen nog niet helemaal lukken om ze op volgorde te krijgen van het aantal punten.
+
+### Day 2
+Het begin voor de search bar is gezet, veel error-handling is opgezet vandaag zodat dat niet later nog vergeten kan worden. Een belangrijke bug wat betreft de navigation controller is opgelost.
+
+### Day 3
+Punten zijn handmatig toegevoegd aan Firebase om te kijken of het ordenen van de followers in de ranking werkt en dat doet het. Nu moeten de punten nog automatisch worden geüpdate. 
+
+### Day 4
+Notificaties zijn toegevoegd, de punten worden automatisch geüpdate, layout is weer bijgwerkt.
+
+### Day 5
+Bij de presenaties is vooral gelet op de codekwaliteit met behulp van Bettercodehub. Een aantal tips die gegeven werden zijn handig en ga ik proberen toe te passen.
+
+## Week 4
+### Day 1
+De search bar werkt bijna, maar er zit een fout in en het lukt mij niet deze op te lossen.
+
+### Day 2
+Nog steeds zit er een fout in mijn search bar, alhoewel deze al wel is verbeterd. Nog wat layout is gedaan vandaag. Er is tevens een begin gemaakt aan het verslag.
+
+### Day 3
