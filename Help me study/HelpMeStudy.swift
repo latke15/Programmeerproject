@@ -49,9 +49,9 @@ class HelpMeStudy: UIViewController {
 //    
 //    func notificationStudy(triggerDate: Date){
 //        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-//        let content = UILocalNotification()
-//        content.alertTitle = "Your break is over. Go study!"
-////        content.alertBody =
+//       let content = UILocalNotification()
+//        content.alertTitle = "BLAAAAAAAYour break is over. Go study!"
+//
 //        content.fireDate = triggerDate as Date
 //        UIApplication.shared.scheduleLocalNotification(content)
 //    }
@@ -60,12 +60,12 @@ class HelpMeStudy: UIViewController {
         // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
         let content = UNMutableNotificationContent()
         content.title = "Hey"
-        content.body = "Your break is over. Go back to study!"
+        content.body = "BLAAAAYour break is over. Go back to study!"
         content.badge = 1
         content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
 
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
@@ -76,12 +76,12 @@ class HelpMeStudy: UIViewController {
         // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
         let content = UNMutableNotificationContent()
         content.title = "Hey"
-        content.body = "Your break started. Enjoy your Break!"
+        content.body = "YOYUOYOYYour break started. Enjoy your Break!"
         content.badge = 1
         content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
         
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
@@ -145,6 +145,7 @@ class HelpMeStudy: UIViewController {
         }
     }
     func startPause(){
+        pauseMinutes = 5
 //        var startDate = NSDate()
 //        let calendar = Calendar.current
 //        let date = calendar.date(byAdding: .second, value: pauseMinutes, to: startDate as Date)
@@ -157,6 +158,7 @@ class HelpMeStudy: UIViewController {
         pauseMinutes -= 1
         timeLeftLabel.text = String(pauseMinutes)
         print("breakcounter")
+        print(pauseMinutes)
         if pauseMinutes == 0{
             notificationStudy()
             breakTimer.invalidate()
@@ -214,7 +216,7 @@ class HelpMeStudy: UIViewController {
         studyTimeLabel.text = "30"
         
         // source: http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
-        let refreshAlert = UIAlertController(title: "Error!", message: "Winners never quit, quitters never win.", preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: "Warning!", message: "Winners never quit, quitters never win.", preferredStyle: UIAlertControllerStyle.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
             self.present(vc, animated: true, completion: nil)
