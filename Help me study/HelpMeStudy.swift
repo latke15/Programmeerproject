@@ -62,7 +62,7 @@ class HelpMeStudy: UIViewController {
         content.title = "Hey"
         content.body = "BLAAAAYour break is over. Go back to study!"
         content.badge = 1
-        content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
+        content.sound = UNNotificationSound.init(named: "CL.mp3")
 
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
