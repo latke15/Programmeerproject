@@ -22,38 +22,39 @@ class HelpMeStudy: UIViewController {
     var bigBreakMinutes: Int = 30
     var studyMinutes: Int = 0
     var points: Int = 0
-    var pauseMinutes: Int = 0
+    var pauseMinutes: Int = 5
     var studyTimer = Timer()
     var breakTimer = Timer()
     var friends = [Friend]()
     var ref: FIRDatabaseReference!
     
-    func notificationBreak(triggerDate: Date){
-        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-        let content = UILocalNotification()
-        content.alertTitle = "Your study time is over. Enjoy your break!"
-//        content.alertBody =
-        content.fireDate = triggerDate as Date
-        UIApplication.shared.scheduleLocalNotification(content)
-    }
-    
-    func notificationBigBreak(triggerDate: Date){
-        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-        let content = UILocalNotification()
-        content.alertTitle = "It is time for a bigger break! Enjoy"
-//        content.alertBody =
-        content.fireDate = triggerDate as Date
-        UIApplication.shared.scheduleLocalNotification(content)
-    }
-    
-    func notificationStudy(triggerDate: Date){
-        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-        let content = UILocalNotification()
-        content.alertTitle = "Your break is over. Go study!"
-//        content.alertBody =
-        content.fireDate = triggerDate as Date
-        UIApplication.shared.scheduleLocalNotification(content)
-    }
+//    func notificationBreak(triggerDate: Date){
+//        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+////        let not = UNNotificationRequest()
+//        let content = UILocalNotification()
+//        content.alertTitle = "Your study time is over. Enjoy your break!"
+////        content.alertBody =
+//        content.fireDate = triggerDate as Date
+//        UIApplication.shared.scheduleLocalNotification(content)
+//    }
+//    
+//    func notificationBigBreak(triggerDate: Date){
+//        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+//        let content = UILocalNotification()
+//        content.alertTitle = "It is time for a bigger break! Enjoy"
+////        content.alertBody =
+//        content.fireDate = triggerDate as Date
+//        UIApplication.shared.scheduleLocalNotification(content)
+//    }
+//    
+//    func notificationStudy(triggerDate: Date){
+//        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
+//        let content = UILocalNotification()
+//        content.alertTitle = "Your break is over. Go study!"
+////        content.alertBody =
+//        content.fireDate = triggerDate as Date
+//        UIApplication.shared.scheduleLocalNotification(content)
+//    }
     
     func notificationStudy(){
         // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
@@ -75,7 +76,7 @@ class HelpMeStudy: UIViewController {
         // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
         let content = UNMutableNotificationContent()
         content.title = "Hey"
-        content.body = "Your break is over. Go back to study!"
+        content.body = "Your break started. Enjoy your Break!"
         content.badge = 1
         content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
         
@@ -144,7 +145,6 @@ class HelpMeStudy: UIViewController {
         }
     }
     func startPause(){
-        pauseMinutes = 5
 //        var startDate = NSDate()
 //        let calendar = Calendar.current
 //        let date = calendar.date(byAdding: .second, value: pauseMinutes, to: startDate as Date)
@@ -160,6 +160,7 @@ class HelpMeStudy: UIViewController {
         if pauseMinutes == 0{
             notificationStudy()
             breakTimer.invalidate()
+            studyTimer.invalidate()
             startStudy(confirmButton)
         }
     }
@@ -170,7 +171,7 @@ class HelpMeStudy: UIViewController {
         self.studyMinutes = minutes
         print("startstudy")
         
-//        var startDate = NSDate()
+//        let startDate = NSDate()
 //        let calendar = Calendar.current
 //        let studyDate1 = calendar.date(byAdding: .second, value: self.studyMinutes, to: startDate as Date)
 //        notificationBreak(triggerDate: studyDate1!)
@@ -211,28 +212,14 @@ class HelpMeStudy: UIViewController {
         minutes = 30
         timeSlider.setValue(30, animated: true)
         studyTimeLabel.text = "30"
-        showAlertView(title: "Error!", withDescription: "Winners never quit and quitters never win.", buttonText: "Ok")
-        let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
-        self.present(vc, animated: true, completion: nil)
         
         // source: http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
-        let refreshAlert = UIAlertController(title: "Error!", message: "Are you sure you want to stop studying?", preferredStyle: UIAlertControllerStyle.alert)
-        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+        let refreshAlert = UIAlertController(title: "Error!", message: "Winners never quit, quitters never win.", preferredStyle: UIAlertControllerStyle.alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
             self.present(vc, animated: true, completion: nil)
         }))
-        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
-            self.studyTimer.fire()
-            self.breakTimer.fire()
-            return
-        }))
         present(refreshAlert, animated: true, completion: nil)
-    }
-    // Show an alert
-    func showAlertView(title: String, withDescription description: String, buttonText text: String) {        let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: text, style: .default, handler: nil)
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
     }
 }
 extension HelpMeStudy: UNUserNotificationCenterDelegate {

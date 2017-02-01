@@ -10,19 +10,21 @@ import UIKit
 import Firebase
 
 class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate{
+    
     @IBOutlet weak var friendsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     var friends = [Friend]()
     var filteredFriends = [Friend]()
-    
     var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveUsers()
         searchBar.delegate = self
-        }
+    }
     
+    // source: https://www.youtube.com/watch?v=js3gHOuPb28
     func retrieveUsers() {
         let ref = FIRDatabase.database().reference()
         ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
@@ -54,30 +56,19 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "friendsCell", for: indexPath) as? FriendsCell
         
-//        if isSearching == true{
             cell?.nameLabel.text = filteredFriends[indexPath.row].name
             cell?.userID = filteredFriends[indexPath.row].userID
             cell?.profilePicture.downloadImage(from: filteredFriends[indexPath.row].imagePath)
-        
-        print("Index Path: \(indexPath.row)")
-        print("Length array: \(filteredFriends.count)")
-        
-//        }
-//        else{
-//            cell?.nameLabel.text = friends[indexPath.row].name
-//            cell?.userID = friends[indexPath.row].userID
-//            cell?.profilePicture.downloadImage(from: friends[indexPath.row].imagePath)
-//        }
-        
         if !isSearching {
             checkFollowing(indexPath: indexPath, isSearching: isSearching)
         }
-
+        if isSearching{
+            cell?.accessoryType = .none
+        }
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return isSearching ? filteredFriends.count: friends.count
         return filteredFriends.count
     }
     
@@ -107,6 +98,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         self.friendsTableView.reloadData()
     }
     
+    // source: https://www.youtube.com/watch?v=js3gHOuPb28
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let array = isSearching ? self.filteredFriends : self.friends
         
@@ -145,6 +137,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         friendsTableView.deselectRow(at: indexPath, animated: true)
     }
 
+    // source: https://www.youtube.com/watch?v=js3gHOuPb28
     func checkFollowing(indexPath: IndexPath, isSearching: Bool) {
         let uid = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
@@ -158,13 +151,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                     if array.count == 0 {
                         return
                     }
-                    if isSearching {
-                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
-                    }
-                    if !isSearching {
-                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-                    }
-                    
                     if value as! String == array[indexPath.row].userID {
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                     }
@@ -174,7 +160,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             self.retrieveUsers()
         })
         ref.removeAllObservers()
-        
     }
 }
 

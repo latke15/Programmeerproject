@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
+   
     @IBOutlet weak var rankingTableView: UITableView!
     
     var friends = [Friend]()
@@ -18,12 +19,11 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         followingUsers()
-        // Do any additional setup after loading the view.
     }
     
     func followingUsers() {
         let ref = FIRDatabase.database().reference()
-        var uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = FIRAuth.auth()!.currentUser!.uid
         ref.child("users").child(uid).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
             if let following = snapshot.value as? [String: AnyObject] {
                 for(_, value) in following {
@@ -65,17 +65,18 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = rankingTableView.dequeueReusableCell(withIdentifier: "friendRankingCell", for: indexPath) as? FriendRankingCell
         
         friends.sort(by: sorterForFileIDASC)
-
+        
         cell?.nameLabel.text = self.friends[indexPath.row].name
         cell?.userID = self.friends[indexPath.row].userID
         cell?.profilePicture.downloadImage(from: self.friends[indexPath.row].imagePath)
-        cell?.studiedMinutesLabel.text = String(self.friends[indexPath.row].points)
+        cell?.studiedMinutesLabel.text = String(self.friends[indexPath.row].points) + " minutes"
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count ?? 0
+        
+        return friends.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(self.friends[indexPath.row].name)

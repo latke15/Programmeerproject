@@ -30,6 +30,18 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // source: http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
+        if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce"))
+        {
+            // app already launched
+        }
+        else
+        {
+            // This is the first launch ever
+            UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
+            UserDefaults.standard.synchronize()
+            showAlertView(title: "Welcome to Help Me Study!", withDescription: "This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. Enjoy and study hard!", buttonText: "Understood!")
+        }
         logRegSwitch.selectedSegmentIndex = 0
         
         self.navigationController?.isNavigationBarHidden = true
@@ -40,12 +52,12 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         userStorage = storage.child("users")
         ref = FIRDatabase.database().reference()
         
-        // source: http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+        // Source: http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
         // Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StartViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
-    // source: http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+    // Source: http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
     // Calls this function when the tap is recognized.
     func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -53,11 +65,10 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
 
     @IBAction func logRegSwitch(_ sender: Any) {
-        // Register
         UIView.animate(withDuration: 0.4) {
             
             if (self.logRegSwitch.selectedSegmentIndex == 0){
-                // register
+                // Register
                 
                 self.registerButton.setTitle("Register", for: .normal)
                 
@@ -86,7 +97,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 self.selectPictureButton.isUserInteractionEnabled = true
                 
             } else {
-                // login
+                // Login
                 
                 self.registerButton.setTitle("Login", for: .normal)
                 
@@ -131,20 +142,21 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
     }
     
+    // Source: https://www.youtube.com/watch?v=AsSZulMc7sk
     @IBAction func register(_ sender: Any) {
         if registerButton.currentTitle == "Register"{
         guard firstNameTextField.text != "", lastNameTextField.text != "", emailTextField.text != "", passwordTextField.text != "", passwordConfirmationTextField.text != "" else{
-            showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will :)")
+            showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will.")
             return
         }
         if (passwordTextField.text != passwordConfirmationTextField.text){
-            showAlertView(title: "Error!", withDescription: "Please make sure to fill in the same passwords.", buttonText: "Ok, I will :)")
+            showAlertView(title: "Error!", withDescription: "Please make sure to fill in the same passwords.", buttonText: "Ok, I will.")
         }
         if self.profilePicture.image == nil {
-            self.showAlertView(title: "Error!", withDescription: "No picture was selected. Please select one to proceed.", buttonText: "Ok, I will :)")
+            self.showAlertView(title: "Error!", withDescription: "No picture was selected. Please select one to proceed.", buttonText: "Ok, I will.")
         }
             if !(emailTextField.text?.contains("@"))!{
-                self.showAlertView(title: "Error!", withDescription: "An incorrect emailaddress was given. Please change it.", buttonText: "Ok, I will :)")
+                self.showAlertView(title: "Error!", withDescription: "An incorrect emailaddress was given. Please change it.", buttonText: "Ok, I will.")
             }
         else{
             
@@ -196,13 +208,13 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         else{
             
             guard emailTextField.text != "", passwordTextField.text != "" else{
-                showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will :)")
+                showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will.")
                 return
             }
             FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
                 if let error = error{
                     print(error.localizedDescription)
-                    self.showAlertView(title: "Error!", withDescription: "Please fill in the right email and password!", buttonText: "Ok, I will :)")
+                    self.showAlertView(title: "Error!", withDescription: "Please fill in the right email and password!", buttonText: "Ok, I will.")
                 }
                 if let user = user {
                     let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
