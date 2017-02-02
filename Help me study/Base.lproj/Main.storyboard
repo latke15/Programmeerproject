@@ -365,13 +365,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-cz-wV2">
-                                <rect key="frame" x="0.0" y="64" width="320" height="420"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="444"/>
                                 <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="420" id="H9D-bM-sk3"/>
+                                    <constraint firstAttribute="height" constant="444" id="H9D-bM-sk3"/>
                                     <constraint firstAttribute="width" constant="320" id="ksF-Mg-HAq"/>
                                 </constraints>
-                                <string key="text">This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. But be careful! When you exit the Help me study screen the timer will stop! Enjoy and study hard!</string>
+                                <string key="text">This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. But be careful! When you exit the Help me study screen or go back the timer will stop! Enjoy and study hard!</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

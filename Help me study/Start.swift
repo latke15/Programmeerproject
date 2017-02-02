@@ -42,7 +42,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
             // This is the first launch ever
             UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
             UserDefaults.standard.synchronize()
-            showAlertView(title: "Welcome to Help Me Study!", withDescription: "This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. But be careful! When you exit the Help me study screen the timer will stop! Enjoy and study hard!", buttonText: "Understood!")
+            showAlertView(title: "Welcome to Help Me Study!", withDescription: "This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. But be careful! When you exit the Help me study screen or go back the timer will stop! Enjoy and study hard!", buttonText: "Understood!")
         }
         logRegSwitch.selectedSegmentIndex = 0
         

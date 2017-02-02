@@ -73,6 +73,18 @@ class HelpMeStudy: UIViewController {
             self.stopButton.isUserInteractionEnabled = false
         }
     }
+    // source: http://stackoverflow.com/questions/8228411/detecting-when-the-back-button-is-pressed-on-a-navbar
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        if parent == nil {
+            // source: http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
+            let refreshAlert = UIAlertController(title: "Warning!", message: "When you go back the timer stops.", preferredStyle: UIAlertControllerStyle.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
+                self.present(vc, animated: true, completion: nil)
+            }))
+            present(refreshAlert, animated: true, completion: nil)        }
+    }
     
     @IBAction func slider(_ sender: UISlider) {
         minutes = Int(sender.value)
