@@ -29,7 +29,7 @@ Vandaag zijn presentaties. Aangezien ik gemerkt heb dat ik achterloop vanwege he
 
 ## Week 3
 ### Day 1
-De viewcontroller waar de users in worden geladen werkt en follow en unfollow werken. In Firebase heeft elke gebruiker een lijst met followers en following door middel van het ID dat Firebase meegeeft aan de gebruiker. Een aantal bugs zijn opgelost. In de ranking moeten de gevolgde gebruikers zichtbaar zijn op volgorde van het aantal geleerde minuten. Dit wil nog niet helemaal lukken. 
+De viewcontroller waar de users in worden geladen werkt en follow en unfollow werken. Deze worden vanuit Firebase in een array geladen van het object Friend. Voor de friendsTableView gebruik ik een aparte cel genaamd FriendsCell In Firebase heeft elke gebruiker een lijst met followers en following door middel van het ID dat Firebase meegeeft aan de gebruiker. Een aantal bugs zijn opgelost. In de ranking moeten de gevolgde gebruikers zichtbaar zijn op volgorde van het aantal geleerde minuten. Dit wil nog niet helemaal lukken. Ook voor de rankingTableView is er een cel gemaakt, namelijk FriendRankingCell.
 
 ### Day 2
 In de view waar de users worden ingeladen, ga je op zoek naar je vrienden en hiervoor wil ik een searchbar gebruiken. Dit werkt met een array waarin de data uit Firebase opgehaald wordt en een waarin de gefilterde users in komen, gefilterd op de zoekopdracht van de gebruiker. Hier ben ik vandaag mee begonnen. Tevens is veel error-handling is opgezet vandaag zodat dat niet later nog vergeten kan worden. Een belangrijke bug wat betreft de navigation controller is opgelost.

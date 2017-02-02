@@ -5,31 +5,33 @@ Studentnummer: 11427353<br>
 Start van het project: 9-1-2017<br>
 # Project proposal
 ## Korte samenvatting
-Deze applicatie bevordert de studie door middel van het studeren in korte stukken inclusief pauzes door middel van een timer. De leertijd is door de gebruiker zelf in te voeren. Daarnaast kan de gebruiker zich vergelijken met zijn vrienden hoeveel tijd zij hebben gestudeerd. 
+De mobiele telefoon is erg handig, maar storend tijdens de studie. Deze applicatie bevordert efficiënt studeren door studieblokken bestaand uit studie- en pauzeblokken. De studieblokken zijn door de gebruiker zelf in te stellen. De competitie tussen vrienden zorgt voor extra studiemotivatie. 
 ## Het probleem
 Veel studenten hebben moeite met het concentreren bij het leren. Alle apparaten die men tegenwoordig tot zijn beschikking heeft, maken het niet makkelijker om gefocust te blijven. Met name de mobiele telefoon zorgt voor veel afleiding bij studenten van verschillende leeftijden. Daarom wordt van een probleem een oplossing gemaakt!
 ## De oplossing
-Daarom zorgt deze applicatie ervoor dat de gebruiker zelf kan kiezen op welke manier hij of zij zijn tijd in wil delen. Bijvoorbeeld door te kiezen om in periodes van halve uren te studeren met telkens vaste pauzes van vijf minuten. Er zal dan een alarm afgaan wanneer het halve uur voorbij is en wanneer het weer begint. Om de applicatie wat interessanter te maken dan alleen nuttig gebruik, kunnen scores vergeleken worden met vrienden. Zo kan je zien wie er het hardst heeft geleerd.
+Deze applicatie zorgt ervoor dat de gebruiker zelf kan kiezen op welke manier hij of zij zijn tijd in wil delen. Bijvoorbeeld door te kiezen om in periodes van halve uren te studeren met telkens vaste pauzes van vijf minuten. Er zal dan een notificatie verzonden worden wanneer het halve uur voorbij is en wanneer de pauze voorbij is. Om de applicatie wat interessanter te maken dan alleen nuttig gebruik, kunnen scores vergeleken worden met vrienden. Zo kan de gebruiker zien wie er het hardst heeft geleerd.
 ## De visualisatie
 Hieronder zijn schetsen te zien van de verschillende schermen die de applicatie bevat.<br>
-De afbeeldingen staan in de volgende volgorde: Het inlogscherm, het keuzemenu, het vriendenscherm, het klassementscherm en het leerscherm.
+De afbeeldingen staan in de volgende volgorde: Het registratiescherm, het inlogscherm, de usersview, de rankingview en het leerscherm.<br>
+![Het registratiescherm]
+(/doc/Register.png)
 ![Het inlogscherm]
-(/doc/Inlogscherm.png)
+(/doc/Login.png)
 ![Het keuzemenu]
-(/doc/Keuzemenu.png)
+(/doc/Menu.png)
 ![Het vriendenscherm]
-(/doc/Vrienden.png)
+(/doc/Users.png)
 ![Het klassementscherm]
-(/doc/Klassement.png)
+(/doc/Rankings.png)
 ![Het leerscherm]
-(/doc/Begin met leren!.png)
+(/doc/Timer.png)
+![De gestarte timer]
+(/doc/TimerStarted.png)
 ## Data sets en data sources
-Het betreft vooral voorgeprogrammeerde methoden, waar de gebruiker zelf details aan kan veranderen. Denk hierbij aan de manier waarop de gebruiker zelf zijn tijd in wil delen. Daarnaast kan de gebruiker vrienden toevoegen en dus zal er informatie van die vrienden opgehaald en getoond moeten worden.
+Het betreft vooral voorgeprogrammeerde methoden, waar de gebruiker zelf details aan kan veranderen. Zo kan de gebruiker zelf zijn periodes van studie instellen. Daarnaast kan de gebruiker vrienden toevoegen en zichzelf vergelijken met deze vrienden.
 ## Delen van de applicatie
-De applicatie bestaat uit verschillende onderdelen. Zo moet elke gebruiker beginnen bij het registratie-/inlogscherm. Hierna volgt een menu waar de gebruiker naar verschillende schermen kan gaan. In dit menu zitten opties naar de volgende schermen op willekeurige volgorde: users, klassement en beginnen met leren. Bij users is het mogelijk om de users te zien en extra vrienden te volgen en te ontvolgen. In het klassement zie je waar jij staat ten opzichte van je vrienden wat betreft het aantal geleerde minuten. Als laatste is daar het beginnen met leren, hetgeen de applicatie om draait. Hier kan de gebruiker instellen hoe lang een studieblok zal duren. Zo zal er een stopwatch komen te staan met een alarm dat afgaat als de leertijd voorbij is en als de leertijd weer begint.
+De applicatie bestaat uit verschillende onderdelen. Zo moet elke nieuwe gebruiker beginnen bij het registratie-/inlogscherm. Hierna volgt een menu waar de gebruiker naar verschillende schermen kan gaan. In dit menu zitten opties naar de volgende views op willekeurige volgorde: Users, Rankings, Info en Help Me Study. Bij Users is er een friendsTableView om de users te zien, te filteren op een zoekopdracht en extra vrienden te volgen en te ontvolgen. In Rankings is de rankingTableView er die laat zien je waar jij staat ten opzichte van je vrienden wat betreft het aantal geleerde minuten. Het Infoscherm geeft een instructie van hoe de applicatie in zijn werk gaat. Als laatste is daar Help Me Study, hetgeen de applicatie om draait. Hier kan de gebruiker instellen hoe lang een studieblok zal duren. Zo zal er een timer komen te staan met een notificatie die verzonden wordt als de leertijd voorbij is en als de leertijd weer begint.
 ## Externe componenten
-Er dient voor deze applicatie data opgeslagen te worden, dit wordt gedaan door middel van Firebase. Hierin gaan alle gebruikersgegevens worden opgeslagen zoals, emailadressen, wachtwoorden, scores, vrienden en dergelijke.
-## Te verwachten problemen
-Bij deze applicatie zijn er een aantal problemen die ik nu voorzie waar ik tegenaan ga lopen. Zo is het inschakelen van de ‘Niet storen’ modus nog maar de vraag of dit mogelijk is. Het toevoegen van vrienden is een ander obstakel waar nog best veel tijd in gaat zitten om dat voor elkaar te krijgen. In principe moet dit lukken, maar als deze problemen niet kunnen worden opgelost zal er of een alternatief gevonden moeten worden of het idee wordt geschrapt. Dit zijn dan ook de onderdelen die niet bij de MVP (Minimum Viable Product) horen, maar als het lukt is het zeker weten mooi meegenomen
+Er dient voor deze applicatie data opgeslagen te worden, dit wordt gedaan door middel van Firebase. Hierin gaan alle gebruikersgegevens worden opgeslagen zoals, userID's, emailadressen, wachtwoorden, scores, volgers en gevolgden per user en profielfoto's.
 ## Verwante applicaties
 Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. Deze applicaties visualiseren de timer op een mooie manier, geven grafieken van de hoeveelheid tijd die je gestudeerd hebt en wanneer. Hiermee zou je dus kunnen kijken op welk moment van de dag de gebruiker het vaakst studeert. 
