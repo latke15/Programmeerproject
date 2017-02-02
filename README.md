@@ -5,7 +5,7 @@ Studentnummer: 11427353<br>
 Start van het project: 9-1-2017<br>
 # Project proposal
 ## Korte samenvatting
-Deze applicatie bevordert de studie door middel van het studeren in korte stukken inclusief pauzes door middel van een timer. De leertijd is door de gebruiker zelf in te voeren. Daarnaast kan de gebruiker zich vergelijken met zijn vrienden hoeveel tijd zij hebben gestudeerd. 
+De mobiele telefoon is erg handig, maar storend tijdens de studie. Deze applicatie bevordert efficiënt studeren door studieblokken bestaand uit studie- en pauzeblokken. De studieblokken zijn door de gebruiker zelf in te stellen. De competitie tussen vrienden zorgt voor extra studiemotivatie. 
 ## Het probleem
 Veel studenten hebben moeite met het concentreren bij het leren. Alle apparaten die men tegenwoordig tot zijn beschikking heeft, maken het niet makkelijker om gefocust te blijven. Met name de mobiele telefoon zorgt voor veel afleiding bij studenten van verschillende leeftijden. Daarom wordt van een probleem een oplossing gemaakt!
 ## De oplossing
