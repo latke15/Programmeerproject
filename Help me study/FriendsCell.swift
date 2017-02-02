@@ -2,6 +2,8 @@
 //  FriendsCell.swift
 //  Help me study
 //
+//  This cell is used for the FriendsTableView.
+//
 //  Created by Nadav Baruch on 18-01-17.
 //  Copyright © 2017 Nadav Baruch. All rights reserved.
 //

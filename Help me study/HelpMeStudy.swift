@@ -2,6 +2,9 @@
 //  HelpMeStudy.swift
 //  Help me study
 //
+//  This viewcontroller contains the timer for the application. The user can set the time he
+//  wants to study and start studying. When he touches the stop button the timer will stop.
+//
 //  Created by Nadav Baruch on 12-01-17.
 //  Copyright © 2017 Nadav Baruch. All rights reserved.
 //
@@ -28,42 +31,13 @@ class HelpMeStudy: UIViewController {
     var friends = [Friend]()
     var ref: FIRDatabaseReference!
     
-//    func notificationBreak(triggerDate: Date){
-//        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-////        let not = UNNotificationRequest()
-//        let content = UILocalNotification()
-//        content.alertTitle = "Your study time is over. Enjoy your break!"
-////        content.alertBody =
-//        content.fireDate = triggerDate as Date
-//        UIApplication.shared.scheduleLocalNotification(content)
-//    }
-//    
-//    func notificationBigBreak(triggerDate: Date){
-//        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-//        let content = UILocalNotification()
-//        content.alertTitle = "It is time for a bigger break! Enjoy"
-////        content.alertBody =
-//        content.fireDate = triggerDate as Date
-//        UIApplication.shared.scheduleLocalNotification(content)
-//    }
-//    
-//    func notificationStudy(triggerDate: Date){
-//        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
-//       let content = UILocalNotification()
-//        content.alertTitle = "BLAAAAAAAYour break is over. Go study!"
-//
-//        content.fireDate = triggerDate as Date
-//        UIApplication.shared.scheduleLocalNotification(content)
-//    }
-    
+    // source: https://github.com/kenechilearnscode/UserNotificationsTutorial
     func notificationStudy(){
-        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
         let content = UNMutableNotificationContent()
-        content.title = "Hey"
-        content.body = "BLAAAAYour break is over. Go back to study!"
+        content.title = "Hey!"
+        content.body = "Your break is over. Go back to study!"
         content.badge = 1
         content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
-
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
@@ -72,14 +46,13 @@ class HelpMeStudy: UIViewController {
         })
     }
     
+    // source: https://github.com/kenechilearnscode/UserNotificationsTutorial
     func notificationBreak(){
-        // notification, source: https://github.com/kenechilearnscode/UserNotificationsTutorial
         let content = UNMutableNotificationContent()
-        content.title = "Hey"
-        content.body = "YOYUOYOYYour break started. Enjoy your Break!"
+        content.title = "Hey!"
+        content.body = "Your break started. Enjoy your Break!"
         content.badge = 1
         content.sound = UNNotificationSound.init(named: "CL.mp3")
-        
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
@@ -113,7 +86,6 @@ class HelpMeStudy: UIViewController {
             studyTimeLabel.text = String(minutes) + " minutes"
             timeLeftLabel.text = String(minutes)
         }
-        
     }
     
     func updatePoints(points: Int) {
@@ -131,13 +103,10 @@ class HelpMeStudy: UIViewController {
     }
 
     func studyCounter(){
-    
         studyMinutes -= 1
         timeLeftLabel.text = String(studyMinutes)
         points += 1
-        print(points)
         updatePoints(points: points)
-        print("studycounter")
         if studyMinutes == 0{
             notificationBreak()
             studyTimer.invalidate()
@@ -146,19 +115,12 @@ class HelpMeStudy: UIViewController {
     }
     func startPause(){
         pauseMinutes = 5
-//        var startDate = NSDate()
-//        let calendar = Calendar.current
-//        let date = calendar.date(byAdding: .second, value: pauseMinutes, to: startDate as Date)
-        breakTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
-//        notificationStudy(triggerDate: date!)
-        print("startpause")
+        breakTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(HelpMeStudy.breakCounter), userInfo: nil, repeats: true)
     }
     
     func breakCounter(){
         pauseMinutes -= 1
         timeLeftLabel.text = String(pauseMinutes)
-        print("breakcounter")
-        print(pauseMinutes)
         if pauseMinutes == 0{
             notificationStudy()
             breakTimer.invalidate()
@@ -171,21 +133,8 @@ class HelpMeStudy: UIViewController {
         studyTimer.invalidate()
         breakTimer.invalidate()
         self.studyMinutes = minutes
-        print("startstudy")
         
-//        let startDate = NSDate()
-//        let calendar = Calendar.current
-//        let studyDate1 = calendar.date(byAdding: .second, value: self.studyMinutes, to: startDate as Date)
-//        notificationBreak(triggerDate: studyDate1!)
-//        let breakDate1 = calendar.date(byAdding: .second, value: self.pauseMinutes, to: studyDate1! as Date)
-//        notificationStudy(triggerDate: breakDate1!)
-//        let studyDate2 = calendar.date(byAdding: .second, value: self.studyMinutes, to: breakDate1! as Date)
-//        notificationBreak(triggerDate: studyDate2!)
-//        let bigBreak = calendar.date(byAdding: .second, value: self.bigBreakMinutes, to: studyDate2! as Date)
-//        notificationBigBreak(triggerDate: bigBreak!)
-        
-        
-        studyTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
+        studyTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(HelpMeStudy.studyCounter), userInfo: nil, repeats: true)
         
         UIView.animate(withDuration: 0.4) {
             self.confirmButton.alpha = 0

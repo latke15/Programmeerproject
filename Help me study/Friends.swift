@@ -2,6 +2,9 @@
 //  Friends.swift
 //  Help me study
 //
+//  This viewcontrollers presents all the users of the application. Here you can search for a
+//  user, follow and unfollow him or her by clicking on them.
+//
 //  Created by Nadav Baruch on 12-01-17.
 //  Copyright © 2017 Nadav Baruch. All rights reserved.
 //
@@ -146,7 +149,6 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             
             if let following = snapshot.value as? [String : AnyObject] {
                 for (_, value) in following {
-                    
                     var array = self.filteredFriends
                     if array.count == 0 {
                         return
@@ -156,13 +158,11 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                     }
                 }
             }
-            
             self.retrieveUsers()
         })
         ref.removeAllObservers()
     }
 }
-
 extension UIImageView {
     func downloadImage(from imgURL: String!) {
         let url = URLRequest(url: URL(string: imgURL)!)

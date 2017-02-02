@@ -2,6 +2,10 @@
 //  StartViewController.swift
 //  Help me study
 //
+//  This is the first viewcontroller of the application. Here the user can register him or
+//  herself or login. If the user is already logged in, he or she will skip this screen and
+//  will go straight to the menu.
+//
 //  Created by Nadav Baruch on 12-01-17.
 //  Copyright © 2017 Nadav Baruch. All rights reserved.
 //
@@ -13,7 +17,6 @@ import FirebaseStorage
 
 class StartViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // Outlets
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -33,7 +36,6 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         // source: http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
         if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce"))
         {
-            // app already launched
         }
         else
         {
@@ -148,7 +150,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
         guard firstNameTextField.text != "", lastNameTextField.text != "", emailTextField.text != "", passwordTextField.text != "", passwordConfirmationTextField.text != "" else{
             showAlertView(title: "Error!", withDescription: "Please make sure to fill in all the fields.", buttonText: "Ok, I will.")
             return
-        }
+            }
         if (passwordTextField.text != passwordConfirmationTextField.text){
             showAlertView(title: "Error!", withDescription: "Please make sure to fill in the same passwords.", buttonText: "Ok, I will.")
         }
@@ -204,7 +206,7 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     uploadTask.resume()
                 }
             })
-            }}
+        }}
         else{
             
             guard emailTextField.text != "", passwordTextField.text != "" else{
@@ -216,13 +218,12 @@ class StartViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     print(error.localizedDescription)
                     self.showAlertView(title: "Error!", withDescription: "Please fill in the right email and password!", buttonText: "Ok, I will.")
                 }
-                if let user = user {
+                if user != nil {
                     let vc = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "navVC")
                     self.present(vc, animated: true, completion: nil)
                 }
             })
-            
-        }
+    }
     }
     
     // Show an alert

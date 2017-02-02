@@ -2,6 +2,9 @@
 //  Menu.swift
 //  Help me study
 //
+//  This is the main menu. Here the user can navigate to all the other views. If the user is
+//  logged in, he will start at this view.
+//
 //  Created by Nadav Baruch on 12-01-17.
 //  Copyright © 2017 Nadav Baruch. All rights reserved.
 //
@@ -11,6 +14,7 @@ import UserNotifications
 import Firebase
 
 class Menu: UIViewController {
+    
     @IBOutlet weak var logOutButton: UIBarButtonItem!
     @IBOutlet weak var friendsButton: UIButton!
     @IBOutlet weak var rankingsButton: UIButton!
@@ -35,7 +39,6 @@ class Menu: UIViewController {
         }
     }
     func appMovedToBackground() {
-        print("App moved to background!")
         notificationExit()
     }
     
@@ -46,7 +49,7 @@ class Menu: UIViewController {
         content.body = "You're leaving the app which means your timer won't continue running!"
         content.badge = 0
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in

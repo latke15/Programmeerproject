@@ -2,6 +2,9 @@
 //  Rankings.swift
 //  Help me study
 //
+//  In this viewcontroller the followed users will be displayed ordered by their amount of
+//  points.
+//
 //  Created by Nadav Baruch on 12-01-17.
 //  Copyright © 2017 Nadav Baruch. All rights reserved.
 //
@@ -14,7 +17,6 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var rankingTableView: UITableView!
     
     var friends = [Friend]()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +58,6 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return this.points > that.points
     }
 
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -75,13 +76,9 @@ class Rankings: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return friends.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.friends[indexPath.row].name)
         rankingTableView.deselectRow(at: indexPath, animated: true)
     }
-
-   
 }
