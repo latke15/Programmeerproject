@@ -35,6 +35,8 @@ De applicatie bestaat uit verschillende onderdelen. Zo moet elke nieuwe gebruike
 Er dient voor deze applicatie data opgeslagen te worden, dit wordt gedaan door middel van Firebase. Hierin gaan alle gebruikersgegevens worden opgeslagen zoals, userID's, emailadressen, wachtwoorden, scores, volgers en gevolgden per user en profielfoto's.
 ## Verwante applicaties
 Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. Deze applicaties visualiseren de timer op een mooie manier, geven grafieken van de hoeveelheid tijd die je gestudeerd hebt en wanneer. Hiermee zou je dus kunnen kijken op welk moment van de dag de gebruiker het vaakst studeert. 
+## Copyright Statement
+Dit project heeft een Apache License, versie 2.0. Deze code is publiekelijk toegankelijk, dus doe er je voordeel mee. Ik ben niet aansprakelijk. Voor de volledige Apache License zie LICENSE.
 ## Gebruikte bronnen
 * Help me study viewcontroller
   * https://github.com/kenechilearnscode/UserNotificationsTutorial
