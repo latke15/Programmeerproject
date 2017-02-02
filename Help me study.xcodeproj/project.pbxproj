@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02427BEF1E43B4EC00D7AF97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02427BEE1E43B4EC00D7AF97 /* Assets.xcassets */; };
 		0288485A1E361EC600876E5B /* FriendRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028848591E361EC600876E5B /* FriendRankingCell.swift */; };
 		02C96B681E277EE10021C03C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C96B671E277EE10021C03C /* AppDelegate.swift */; };
 		02C96B6A1E277EE10021C03C /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C96B691E277EE10021C03C /* Start.swift */; };
 		02C96B6D1E277EE10021C03C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C96B6B1E277EE10021C03C /* Main.storyboard */; };
-		02C96B6F1E277EE10021C03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C96B6E1E277EE10021C03C /* Assets.xcassets */; };
 		02C96B721E277EE10021C03C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C96B701E277EE10021C03C /* LaunchScreen.storyboard */; };
 		02E4F0A71E2F6CBB00E9533F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02E4F0A61E2F6CBB00E9533F /* GoogleService-Info.plist */; };
 		02E4F0AB1E2F891B00E9533F /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4F0AA1E2F891B00E9533F /* FriendsCell.swift */; };
@@ -24,12 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02427BEE1E43B4EC00D7AF97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		028848591E361EC600876E5B /* FriendRankingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRankingCell.swift; sourceTree = "<group>"; };
 		02C96B641E277EE10021C03C /* Help me study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Help me study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C96B671E277EE10021C03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C96B691E277EE10021C03C /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
 		02C96B6C1E277EE10021C03C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		02C96B6E1E277EE10021C03C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02C96B711E277EE10021C03C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02C96B731E277EE10021C03C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02E4F0A61E2F6CBB00E9533F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -117,9 +117,9 @@
 		02C96B661E277EE10021C03C /* Help me study */ = {
 			isa = PBXGroup;
 			children = (
+				02427BEE1E43B4EC00D7AF97 /* Assets.xcassets */,
 				02E4F0AC1E2F8BE800E9533F /* Objects */,
 				02427BAD1E4343A000D7AF97 /* ViewControllers */,
-				02C96B6E1E277EE10021C03C /* Assets.xcassets */,
 				0217BB4A1E2CCEB9002F0379 /* Layout */,
 				02427BAE1E4343AF00D7AF97 /* Others */,
 				026F1F501E37881700DA2908 /* Cells */,
@@ -225,7 +225,7 @@
 			files = (
 				02C96B721E277EE10021C03C /* LaunchScreen.storyboard in Resources */,
 				02E4F0A71E2F6CBB00E9533F /* GoogleService-Info.plist in Resources */,
-				02C96B6F1E277EE10021C03C /* Assets.xcassets in Resources */,
+				02427BEF1E43B4EC00D7AF97 /* Assets.xcassets in Resources */,
 				02C96B6D1E277EE10021C03C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,7 +462,6 @@
 			baseConfigurationReference = 19B20C08B32C6911FFE9D155 /* Pods-Help me study.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = BV799T69S6;
 				INFOPLIST_FILE = "Help me study/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -477,7 +476,6 @@
 			baseConfigurationReference = 6B24A543094ED78D2BD4976E /* Pods-Help me study.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = BV799T69S6;
 				INFOPLIST_FILE = "Help me study/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
