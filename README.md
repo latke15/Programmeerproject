@@ -38,14 +38,14 @@ Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. D
 ## Gebruikte bronnen
 ### Help me study viewcontroller
 * https://github.com/kenechilearnscode/UserNotificationsTutorial
-* http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
+* http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped<br>
 ### MenuViewController
-* https://www.hackingwithswift.com/example-code/system/how-to-detect-when-your-app-moves-to-the-background
+* https://www.hackingwithswift.com/example-code/system/how-to-detect-when-your-app-moves-to-the-background<br>
 ### FriendsViewController
 * https://www.youtube.com/watch?v=js3gHOuPb28
-* https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
+* https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide<br>
 ### RankingsViewController
-* http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value
+* http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value<br>
 ### StartViewController
 * http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
 * http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
