@@ -36,21 +36,21 @@ Er dient voor deze applicatie data opgeslagen te worden, dit wordt gedaan door m
 ## Verwante applicaties
 Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. Deze applicaties visualiseren de timer op een mooie manier, geven grafieken van de hoeveelheid tijd die je gestudeerd hebt en wanneer. Hiermee zou je dus kunnen kijken op welk moment van de dag de gebruiker het vaakst studeert. 
 ## Gebruikte bronnen
-Help me study viewcontroller
-* https://github.com/kenechilearnscode/UserNotificationsTutorial
-* http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
+* Help me study viewcontroller
+  * https://github.com/kenechilearnscode/UserNotificationsTutorial
+  * http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
 <br>
-MenuViewController
-* https://www.hackingwithswift.com/example-code/system/how-to-detect-when-your-app-moves-to-the-background
+* MenuViewController
+  * https://www.hackingwithswift.com/example-code/system/how-to-detect-when-your-app-moves-to-the-background
 <br>
-FriendsViewController
-* https://www.youtube.com/watch?v=js3gHOuPb28
-* https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
+* FriendsViewController
+  * https://www.youtube.com/watch?v=js3gHOuPb28
+  * https://github.com/codepath/ios_guides/wiki/Search-Bar-Guide
 <br>
-RankingsViewController
-* http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value
+* RankingsViewController
+  * http://stackoverflow.com/questions/24130026/swift-how-to-sort-array-of-custom-objects-by-property-value
 <br>
-StartViewController
-* http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
-* http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
-* https://www.youtube.com/watch?v=AsSZulMc7sk
+* StartViewController
+  * http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
+  * http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+  * https://www.youtube.com/watch?v=AsSZulMc7sk
