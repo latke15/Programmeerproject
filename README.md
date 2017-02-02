@@ -12,11 +12,11 @@ Veel studenten hebben moeite met het concentreren bij het leren. Alle apparaten 
 Deze applicatie zorgt ervoor dat de gebruiker zelf kan kiezen op welke manier hij of zij zijn tijd in wil delen. Bijvoorbeeld door te kiezen om in periodes van halve uren te studeren met telkens vaste pauzes van vijf minuten. Er zal dan een notificatie verzonden worden wanneer het halve uur voorbij is en wanneer de pauze voorbij is. Om de applicatie wat interessanter te maken dan alleen nuttig gebruik, kunnen scores vergeleken worden met vrienden. Zo kan de gebruiker zien wie er het hardst heeft geleerd.
 ## De visualisatie
 Hieronder zijn schetsen te zien van de verschillende schermen die de applicatie bevat.<br>
-De afbeeldingen staan in de volgende volgorde: Het inlogscherm, het keuzemenu, het vriendenscherm, het klassementscherm en het leerscherm.
-![Het inlogscherm]
-(/doc/Login.png)
+De afbeeldingen staan in de volgende volgorde: Het inlogscherm, het keuzemenu, het vriendenscherm, het klassementscherm en het leerscherm.<br>
 ![Het registratiescherm]
 (/doc/Register.png)
+![Het inlogscherm]
+(/doc/Login.png)
 ![Het keuzemenu]
 (/doc/Menu.png)
 ![Het vriendenscherm]
