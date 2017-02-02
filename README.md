@@ -41,6 +41,7 @@ Dit project heeft een Apache License, versie 2.0. Deze code is publiekelijk toeg
 * Help me study viewcontroller
   * https://github.com/kenechilearnscode/UserNotificationsTutorial
   * http://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
+  * http://stackoverflow.com/questions/8228411/detecting-when-the-back-button-is-pressed-on-a-navbar
 <br>
 * MenuViewController
   * https://www.hackingwithswift.com/example-code/system/how-to-detect-when-your-app-moves-to-the-background
