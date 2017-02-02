@@ -37,7 +37,6 @@ class HelpMeStudy: UIViewController {
         content.title = "Hey!"
         content.body = "Your break is over. Go back to study!"
         content.badge = 1
-        content.sound = UNNotificationSound.init(named: "AirHorn.mp3")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
@@ -52,7 +51,6 @@ class HelpMeStudy: UIViewController {
         content.title = "Hey!"
         content.body = "Your break started. Enjoy your Break!"
         content.badge = 1
-        content.sound = UNNotificationSound.init(named: "CL.mp3")
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let requestIdentifier = "Breakalert"
