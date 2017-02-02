@@ -35,6 +35,8 @@ De applicatie bestaat uit verschillende onderdelen. Zo moet elke nieuwe gebruike
 Er dient voor deze applicatie data opgeslagen te worden, dit wordt gedaan door middel van Firebase. Hierin gaan alle gebruikersgegevens worden opgeslagen zoals, userID's, emailadressen, wachtwoorden, scores, volgers en gevolgden per user en profielfoto's.
 ## Verwante applicaties
 Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. Deze applicaties visualiseren de timer op een mooie manier, geven grafieken van de hoeveelheid tijd die je gestudeerd hebt en wanneer. Hiermee zou je dus kunnen kijken op welk moment van de dag de gebruiker het vaakst studeert. 
+## Copyright Statement
+This project has an Apache License,Version 2.0. This code is public so enjoy the code, but please don't hold me liable. For more info check the LICENSE file.
 ## Gebruikte bronnen
 * Help me study viewcontroller
   * https://github.com/kenechilearnscode/UserNotificationsTutorial
@@ -54,6 +56,3 @@ Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. D
   * http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
   * http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
   * https://www.youtube.com/watch?v=AsSZulMc7sk
-<br>
-## Copyright Statement
-This project has an Apache License,Version 2.0. This code is public so enjoy the code, but please don't hold me liable. For more info check the LICENSE file.
