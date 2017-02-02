@@ -1,6 +1,6 @@
 # Report 
 ## Short description
-De mobiele telefoon is erg handig, maar zorgt wel voor afleiding tijdens de studie. Deze applicatie bevordert de studie door middel van het studeren in korte stukken inclusief pauzes door middel van een timer. De leertijd is door de gebruiker zelf in te voeren. Daarnaast kan de gebruiker zich vergelijken met zijn vrienden hoeveel tijd zij hebben gestudeerd.<br>
+De mobiele telefoon is erg handig, maar storend tijdens de studie. Deze applicatie bevordert efficiënt studeren door studieblokken bestaand uit studie- en pauzeblokken. De studieblokken zijn door de gebruiker zelf in te stellen. De competitie tussen vrienden zorgt voor extra studiemotivatie.<br>
 ![Screenshot van de Help Me Study View]
 (/doc/timerscherm.png)
 
