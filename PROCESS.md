@@ -7,13 +7,13 @@ Nadat de eerste grove lijnen waren uitgezet, werd het tijd om er wat gedetaillee
 ### Day 3
 De eerste teambesprekingen vonden plaats. Helaas ben ik ziek wakker geworden waardoor ik deze dag er niet bij kon zijn. Wel zijn er vorderingen gemaakt in het DESIGN bestand en is deze ook afgemaakt. Tevens is de start van de applicatie zelf ook gemaakt.
 ### Day 4
-Ik voelde me iets beter dus besloot om naar de universiteit te gaan. Ik ben vroegtijdig weer naar huis gegaan. Niet veel vooruitgang is geboekt.
+Ik voelde me iets beter dus besloot om naar de universiteit te gaan. Ik ben vroegtijdig weer naar huis gegaan. Niet veel vooruitgang is geboekt, maar een basis wat betreft functionaliteit is gezet.
 ### Day 5
 Helaas voel ik mij alleen maar slechter, wat ook geen positieve invloed heeft op de vorderingen van het project.
 
 ## Week 2
 ### Day 1
-Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worden gemaakt. De basis voor de registratie- en de inlogmogelijkheid is gelegd. Hier gaat het emailadres opgeslagen worden, de naam en wachtwoord. Deze worden opgeslagen in Firebase onder de naam users.
+Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worden gemaakt. De basis voor de registratie- en de inlogmogelijkheid is gelegd. Hier gaat het emailadres opgeslagen worden, de naam en wachtwoord. Deze worden opgeslagen in Firebase onder de naam users elk met een eigen ID
 
 ### Day 2 
 De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkheid is nog verder uitgewerkt. De timer werkt alsvolgt, als de tijd wordt ingesteld door de gebruiker en volgt er een timer voor dit aantal minuten. Dan heeft de gebruiker een pauze van vijf minuten en volgt er weer een leersessie enzovoort. Door middel van functies die elkaar aanroepen, blijft de timer lopen tot er op stop wordt gedrukt of de viewcontroller wordt verlaten.
@@ -22,10 +22,10 @@ De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkhei
 De registratie- en de inlogmogelijkheid werken beiden. Dit heeft best wat tijd gekost, maar ik ben erg tevreden dat het gelukt is. 
 
 ### Day 4
-Layout is bijgewerkt, er is verder gegaan met de timer. Deze functies zitten in elkaar verwerkt en zijn dus best lastig, vooral bij het testen. Ik heb audio erin verwerkt zodat je hoort als de timer voorbij is. Misschien is het verstandig dit te vervangen door een notificatie met geluid.
+Layout is bijgewerkt en er is verder gegaan met de timer. Deze functies zitten in elkaar verwerkt en zijn dus best lastig, vooral bij het testen. Ik heb audio erin verwerkt zodat je hoort als de timer voorbij is. Misschien is het verstandig dit te vervangen door een notificatie met geluid.
 
 ### Day 5
-Vandaag zijn presentaties. Aangezien ik gemerkt heb dat ik achterloop vanwege het feit dat ik ziek was, moet het volgende weken allemaal net wat sneller. Een aantal goede tips zijn verkregen en worden over gedacht tijdens het weekend.
+Vandaag zijn presentaties. Aangezien ik gemerkt heb dat ik achterloop vanwege het feit dat ik ziek was, moet het volgende weken allemaal net wat sneller. Een aantal goede tips zijn verkregen en worden over gedacht tijdens het weekend. Denk hierbij aan een melding als de user de timer verlaat.
 
 ## Week 3
 ### Day 1
@@ -38,7 +38,7 @@ In de view waar de users worden ingeladen, ga je op zoek naar je vrienden en hie
 Punten zijn handmatig toegevoegd aan Firebase om te kijken of het ordenen van de followers in de ranking werkt en dat doet het. Ik heb hiervoor een functie geschreven die checkt het aantal punten van de gebruiker hoger is dan die van de anderen. Op deze manier worden de gebruikers gesorteerd in een array. Nu moeten de punten nog automatisch worden geüpdate. Dit komt erbij in de Help Me Study viewcontroller.
 
 ### Day 4
-Notificaties zijn toegevoegd, maar aangezien de applicatie niet op de achtergrond doorloopt is het nodig om de applicatie aan te laten om het goed te laten functioneren. De punten worden automatisch geüpdate bij elke minuut die word geteld en de layout is weer bijgwerkt.
+Notificaties zijn toegevoegd, maar aangezien de applicatie niet op de achtergrond doorloopt is het nodig om de applicatie aan te laten om het goed te laten functioneren. Hier moet de gebruiker nog van op de hoogte gesteld worden. Dit kan bijvoorbeeld door de applicatie op de achtergrond te laten runnen of door de gebruiker een melding te sturen als hij uit de applicatie gaat of een introductie bij het openen van de applicatie voor de eerste keer. Hier ga ik ook nog mee aan de slag en kijken welke optie het best is. De punten worden automatisch geüpdate bij elke minuut die word geteld en de layout is weer bijgwerkt.
 
 ### Day 5
 Bij de presenaties is vooral gelet op de codekwaliteit met behulp van Bettercodehub. Een aantal tips die gegeven werden zijn handig en ga ik proberen toe te passen.
@@ -52,3 +52,6 @@ Nog steeds zit er een fout in mijn search bar, alhoewel deze al wel is verbeterd
 
 ### Day 3
 Vandaag zijn de laatste wijzigingen aangebracht aan de applicatie. Alles is gebruiksvriendelijk gemaakt, de code is opgeschoond wat betreft gecommente code, printstatements en dergelijke. Ook is er een melding ingebouwd met instructies de eerste keer dat de applicatie geopend wordt, deze instructies zijn terug te lezen in de Info viewcontroller. Omdat het laten runnen van de applicatie op de achtergrond te veel werk is voor nu en omdat het volgens Julian ook erg lastig schijnt te zijn, laat ik het gaan. Daarom heb ik een melding ingebouwd telkens als de applicatie verlaten wordt, dat de timer niet doorloopt als herinnering voor de gebruiker. Tevens is er een melding ingebouwd als de gebruiker stopt met studeren.
+
+### Day 4
+De laatste dag staat in teken van alle kleine dingen aanpassen. In grote lijnen is het allemaal af, nu de details nog. 
