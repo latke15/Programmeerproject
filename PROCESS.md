@@ -13,16 +13,16 @@ Helaas voel ik mij alleen maar slechter, wat ook geen positieve invloed heeft op
 
 ## Week 2
 ### Day 1
-Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worden gemaakt. De basis voor de registratie- en de inlogmogelijkheid is gelegd. Hier gaat het emailadres opgeslagen worden, de naam en wachtwoord. Deze worden opgeslagen in Firebase.
+Omdat ik niet veel gedaan heb toen ik ziek was, moest er nu een inhaalslag worden gemaakt. De basis voor de registratie- en de inlogmogelijkheid is gelegd. Hier gaat het emailadres opgeslagen worden, de naam en wachtwoord. Deze worden opgeslagen in Firebase onder de naam users.
 
 ### Day 2 
-De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkheid is nog verder uitgewerkt. De timer werkt alsvolgt, als de tijd wordt ingesteld door de gebruiker en volgt er een timer voor dit aantal minuten. Dan heeft de gebruiker een pauze van vijf minuten en volgt er weer een leersessie enzovoort. Door middel van functies die elkaar aanroepen, blijft de timer lopen tot er op stop wordt gedrukt.
+De timer was nog niet helemaal werkend en de registratie- en de inlogmogelijkheid is nog verder uitgewerkt. De timer werkt alsvolgt, als de tijd wordt ingesteld door de gebruiker en volgt er een timer voor dit aantal minuten. Dan heeft de gebruiker een pauze van vijf minuten en volgt er weer een leersessie enzovoort. Door middel van functies die elkaar aanroepen, blijft de timer lopen tot er op stop wordt gedrukt of de viewcontroller wordt verlaten.
 
 ### Day 3
 De registratie- en de inlogmogelijkheid werken beiden. Dit heeft best wat tijd gekost, maar ik ben erg tevreden dat het gelukt is. 
 
 ### Day 4
-Layout is bijgewerkt, er is verder gegaan met de timer. Deze functies zitten in elkaar verwerkt en zijn dus best lastig, vooral bij het testen. Ik heb audio erin verwerkt zodat je hoort als de timer voorbij is.
+Layout is bijgewerkt, er is verder gegaan met de timer. Deze functies zitten in elkaar verwerkt en zijn dus best lastig, vooral bij het testen. Ik heb audio erin verwerkt zodat je hoort als de timer voorbij is. Misschien is het verstandig dit te vervangen door een notificatie met geluid.
 
 ### Day 5
 Vandaag zijn presentaties. Aangezien ik gemerkt heb dat ik achterloop vanwege het feit dat ik ziek was, moet het volgende weken allemaal net wat sneller. Een aantal goede tips zijn verkregen en worden over gedacht tijdens het weekend.
@@ -32,7 +32,7 @@ Vandaag zijn presentaties. Aangezien ik gemerkt heb dat ik achterloop vanwege he
 De viewcontroller waar de users in worden geladen werkt en follow en unfollow werken. In Firebase heeft elke gebruiker een lijst met followers en following door middel van het ID dat Firebase meegeeft aan de gebruiker. Een aantal bugs zijn opgelost. In de ranking moeten de gevolgde gebruikers zichtbaar zijn op volgorde van het aantal geleerde minuten. Dit wil nog niet helemaal lukken. 
 
 ### Day 2
-In de view waar de users worden ingeladen, ga je op zoek naar je vrienden en hiervoor wil ik een searchbar gebruiken. Dit werkt met een array waarin de data uit Firebase opgehaald wordt en een waarin de gefilterde users in komen, gefilterd op de zoekopdracht van de gebruiker. Hier ben ik vandaag mee begonnen. Veel error-handling is opgezet vandaag zodat dat niet later nog vergeten kan worden. Een belangrijke bug wat betreft de navigation controller is opgelost.
+In de view waar de users worden ingeladen, ga je op zoek naar je vrienden en hiervoor wil ik een searchbar gebruiken. Dit werkt met een array waarin de data uit Firebase opgehaald wordt en een waarin de gefilterde users in komen, gefilterd op de zoekopdracht van de gebruiker. Hier ben ik vandaag mee begonnen. Tevens is veel error-handling is opgezet vandaag zodat dat niet later nog vergeten kan worden. Een belangrijke bug wat betreft de navigation controller is opgelost.
 
 ### Day 3
 Punten zijn handmatig toegevoegd aan Firebase om te kijken of het ordenen van de followers in de ranking werkt en dat doet het. Ik heb hiervoor een functie geschreven die checkt het aantal punten van de gebruiker hoger is dan die van de anderen. Op deze manier worden de gebruikers gesorteerd in een array. Nu moeten de punten nog automatisch worden geüpdate. Dit komt erbij in de Help Me Study viewcontroller.
