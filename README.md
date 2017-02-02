@@ -54,5 +54,6 @@ Er zijn applicaties die enigszins dezelfde insteek hebben als deze applicatie. D
   * http://stackoverflow.com/questions/30635160/how-to-check-if-the-ios-app-is-running-for-the-first-time-using-swift
   * http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
   * https://www.youtube.com/watch?v=AsSZulMc7sk
+<br>
 ## Copyright Statement
 This project has an Apache License,Version 2.0. This code is public so enjoy the code, but please don't hold me liable. For more info check the LICENSE file.
