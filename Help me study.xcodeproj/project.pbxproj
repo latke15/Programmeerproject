@@ -71,6 +71,29 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		02427BAD1E4343A000D7AF97 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				02C96B691E277EE10021C03C /* Start.swift */,
+				02F335971E27EFE700E75B4C /* Rankings.swift */,
+				02F335991E27EFEF00E75B4C /* Friends.swift */,
+				02F3359B1E27F00400E75B4C /* HelpMeStudy.swift */,
+				02427BAB1E42715000D7AF97 /* Info.swift */,
+				02F335951E27EFD300E75B4C /* Menu.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		02427BAE1E4343AF00D7AF97 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				02C96B731E277EE10021C03C /* Info.plist */,
+				02C96B671E277EE10021C03C /* AppDelegate.swift */,
+				02E4F0A61E2F6CBB00E9533F /* GoogleService-Info.plist */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
 		026F1F501E37881700DA2908 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,18 +134,11 @@
 			isa = PBXGroup;
 			children = (
 				02E4F0AC1E2F8BE800E9533F /* Objects */,
-				02C96B671E277EE10021C03C /* AppDelegate.swift */,
-				02C96B691E277EE10021C03C /* Start.swift */,
-				02F335971E27EFE700E75B4C /* Rankings.swift */,
-				02F335991E27EFEF00E75B4C /* Friends.swift */,
+				02427BAD1E4343A000D7AF97 /* ViewControllers */,
 				02C4FFA21E2E7C65004918A7 /* Sounds */,
-				02F3359B1E27F00400E75B4C /* HelpMeStudy.swift */,
-				02427BAB1E42715000D7AF97 /* Info.swift */,
-				02F335951E27EFD300E75B4C /* Menu.swift */,
 				02C96B6E1E277EE10021C03C /* Assets.xcassets */,
 				0217BB4A1E2CCEB9002F0379 /* Layout */,
-				02C96B731E277EE10021C03C /* Info.plist */,
-				02E4F0A61E2F6CBB00E9533F /* GoogleService-Info.plist */,
+				02427BAE1E4343AF00D7AF97 /* Others */,
 				026F1F501E37881700DA2908 /* Cells */,
 			);
 			path = "Help me study";
