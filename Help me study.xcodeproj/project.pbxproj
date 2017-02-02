@@ -461,7 +461,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 19B20C08B32C6911FFE9D155 /* Pods-Help me study.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BV799T69S6;
 				INFOPLIST_FILE = "Help me study/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,7 +475,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B24A543094ED78D2BD4976E /* Pods-Help me study.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BV799T69S6;
 				INFOPLIST_FILE = "Help me study/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
