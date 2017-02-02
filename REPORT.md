@@ -1,7 +1,8 @@
 # Report 
 ## Short description
 De mobiele telefoon is erg handig, maar zorgt wel voor afleiding tijdens de studie. Deze applicatie bevordert de studie door middel van het studeren in korte stukken inclusief pauzes door middel van een timer. De leertijd is door de gebruiker zelf in te voeren. Daarnaast kan de gebruiker zich vergelijken met zijn vrienden hoeveel tijd zij hebben gestudeerd.
-[screenshot]
+![Screenshot van de Help Me Study View]
+(/doc/timerscherm.png)
 
 ## Technical design
 Als de applicatie voor het eerst wordt geopend komt de gebruiker in een registreer/inlogscherm. Hier moeten de gegevens ingevuld worden en dan wordt doorverwezen naar het menu. In het menu zijn er vier andere views waar naartoe genavigeerd kan worden. Users, Rankings, Info en Help Me Study. In de UsersViewController zijn alle gebruikers gepresenteerd. Hier kan de gebruiker zoeken naar gebruikers, ze volgen en ontvolgen. In de RankingsViewController worden de gevolgde gebruikers gesorteerd op volgorde van het aantal punten, dat wil zeggen het aantal geleerde minuten. De InfoViewController bevat een uitleg van de applicatie. Deze uitleg verschijnt ook in de vorm van een melding als de gebruiker de applicatie voor het eerst opent. In de Help Me Study ViewController zit een timer voor de studie. De gebruiker kan zelf het aantal minuten instellen voor de leersessie. 
