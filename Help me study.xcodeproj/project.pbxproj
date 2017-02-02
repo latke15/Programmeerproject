@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02427BA91E40AA2700D7AF97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02427BA81E40AA2700D7AF97 /* ViewController.swift */; };
 		02427BAC1E42715000D7AF97 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02427BAB1E42715000D7AF97 /* Info.swift */; };
 		0288485A1E361EC600876E5B /* FriendRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028848591E361EC600876E5B /* FriendRankingCell.swift */; };
 		02AB49B31E3A26B00056BB7F /* AirHorn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02AB49B21E3A26B00056BB7F /* AirHorn.mp3 */; };
@@ -28,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02427BA81E40AA2700D7AF97 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		02427BAB1E42715000D7AF97 /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		028848591E361EC600876E5B /* FriendRankingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRankingCell.swift; sourceTree = "<group>"; };
 		02AB49B21E3A26B00056BB7F /* AirHorn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AirHorn.mp3; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 				02C96B671E277EE10021C03C /* AppDelegate.swift */,
 				02C96B691E277EE10021C03C /* Start.swift */,
 				02F335971E27EFE700E75B4C /* Rankings.swift */,
-				02427BA81E40AA2700D7AF97 /* ViewController.swift */,
 				02F335991E27EFEF00E75B4C /* Friends.swift */,
 				02C4FFA21E2E7C65004918A7 /* Sounds */,
 				02F3359B1E27F00400E75B4C /* HelpMeStudy.swift */,
@@ -336,7 +333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02427BA91E40AA2700D7AF97 /* ViewController.swift in Sources */,
 				02F3359A1E27EFEF00E75B4C /* Friends.swift in Sources */,
 				02C96B6A1E277EE10021C03C /* Start.swift in Sources */,
 				02F335961E27EFD300E75B4C /* Menu.swift in Sources */,

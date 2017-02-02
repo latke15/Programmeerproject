@@ -131,7 +131,7 @@ class Friends: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                 
                 self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             }
-
+            self.friendsTableView.reloadData()
         })
         ref.removeAllObservers()
         friendsTableView.deselectRow(at: indexPath, animated: true)
