@@ -312,10 +312,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="StopButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-WT-a6C">
-                                <rect key="frame" x="0.0" y="617" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="StopButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-WT-a6C">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.99609345197677612" green="0.99610108137130737" blue="0.99188107252120972" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="73N-hQ-Mtk"/>
+                                    <constraint firstAttribute="width" constant="375" id="gs4-yu-dGe"/>
+                                </constraints>
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" red="0.015683278441429138" green="0.015688259154558182" blue="0.015681706368923187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -331,6 +334,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qdd-WT-a6C" firstAttribute="leading" secondItem="uwF-Rm-EZs" secondAttribute="leading" id="9gr-uz-3XC"/>
+                            <constraint firstItem="qdd-WT-a6C" firstAttribute="bottom" secondItem="h9X-wO-zod" secondAttribute="top" id="Srd-i8-vvW"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="YGW-ZX-6qS" id="phS-Rs-oig"/>
@@ -357,10 +364,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-cz-wV2">
-                                <rect key="frame" x="0.0" y="64" width="320" height="417"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-cz-wV2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="420"/>
                                 <color key="backgroundColor" red="0.94628936052322388" green="0.90622401237487793" blue="0.87726134061813354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="420" id="H9D-bM-sk3"/>
+                                    <constraint firstAttribute="width" constant="320" id="ksF-Mg-HAq"/>
+                                </constraints>
                                 <string key="text">This application is made so you can study more efficiently! The timer you can set yourself and breaks are 5 minutes long. Search for friends in users and follow and unfollow them. In rankings you can see your friends ranked by the minutes they studied. But be careful! When you exit the Help me study screen the timer will stop! Enjoy and study hard!</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -374,6 +384,11 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.94628936050000001" green="0.90622401239999995" blue="0.87726134060000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zCe-cz-wV2" firstAttribute="leading" secondItem="pxC-bv-kww" secondAttribute="leading" id="e4K-lI-d0z"/>
+                            <constraint firstAttribute="trailing" secondItem="zCe-cz-wV2" secondAttribute="trailing" id="jTh-Cq-yhF"/>
+                            <constraint firstItem="zCe-cz-wV2" firstAttribute="top" secondItem="pk9-C4-Auw" secondAttribute="bottom" id="zsx-VB-sOd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jdw-kk-OjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
