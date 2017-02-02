@@ -14,15 +14,19 @@ Deze applicatie zorgt ervoor dat de gebruiker zelf kan kiezen op welke manier hi
 Hieronder zijn schetsen te zien van de verschillende schermen die de applicatie bevat.<br>
 De afbeeldingen staan in de volgende volgorde: Het inlogscherm, het keuzemenu, het vriendenscherm, het klassementscherm en het leerscherm.
 ![Het inlogscherm]
-(/doc/Inlogscherm.png)
+(/doc/Login.png)
+![Het registratiescherm]
+(/doc/Register.png)
 ![Het keuzemenu]
-(/doc/Keuzemenu.png)
+(/doc/Menu.png)
 ![Het vriendenscherm]
-(/doc/Vrienden.png)
+(/doc/Users.png)
 ![Het klassementscherm]
-(/doc/Klassement.png)
+(/doc/Rankings.png)
 ![Het leerscherm]
-(/doc/Begin met leren!.png)
+(/doc/Timer.png)
+![De gestarte timer]
+(/doc/TimerStarted.png)
 ## Data sets en data sources
 Het betreft vooral voorgeprogrammeerde methoden, waar de gebruiker zelf details aan kan veranderen. Zo kan de gebruiker zelf zijn periodes van studie instellen. Daarnaast kan de gebruiker vrienden toevoegen en zichzelf vergelijken met deze vrienden.
 ## Delen van de applicatie
